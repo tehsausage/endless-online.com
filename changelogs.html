@@ -1,0 +1,820 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+  <meta name="viewport" content="width=max-device-width, user-scalable=yes">
+  <meta name="keywords" content="online rpg, free rpg, mmorpg, mmrpg, world, roleplay, endless online, anime, manga"/> 
+  <meta name="description" content="Welcome page for the free online mmorpg Endless Online."/> 
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <title>Endless Online - Massive online RPG</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table width="100%">
+<tr>
+	<td bgcolor="#000000" height="100" align="center">
+		<font size="5" face="Arial" color="#FFFFFF">
+		<a href="index.html" class="headerlink">HOME</a> | 
+		<a href="archives.html" class="headerlink">ARCHIVES</a> | 
+		<a href="gallery.html" class="headerlink">GALLERY</a> | 
+		<a href="links.html" class="headerlink">LINKS</a> | 
+		<a href="getting_started.html" class="headerlink">GETTING STARTED</a> | 
+		<a href="credential.html" class="headerlink">CREDENTIAL</a>
+		</font>
+	</td>
+</tr>
+
+<tr>
+	<td background="header.jpg" height="500" align="center">
+		<img src="endless.png">
+	</td>
+</tr>
+
+<tr>
+	<td height="20" align="center">
+	</td>
+</tr>
+
+<tr>
+	<td align="center">
+
+
+		<table width="1200" cellpadding="20">
+		<tr>
+			<td align="center">
+
+			<font size="7" face="Arial" color="#000000">
+			<b>Endless Online</b> : Change Logs
+			</font>
+			<br/>
+			<font size="5" face="Arial" color="#000000">
+			For archive purposes, here are all the change logs of the original Endless Online client/server updates.
+			</font>
+		</td>
+	</tr>
+
+	<tr><td></td></tr>
+
+
+
+	<tr>
+		<td align="center" bgcolor="#e8e7dd">
+
+
+<table cellpadding="20"><tr><td width="1100" bgcolor="#f4f4ef"><PRE>
+CHANGELOG V0.28
+
+[%] Barber range fix (invisible bug)
+[%] Unlimited buy items bug fixed.
+[%] Slow queries removed from gameserver.
+[%] Character filter on guild tag/names.
+</PRE></td></tr><table><br/>
+
+<table cellpadding="20"><tr><td width="1100" bgcolor="#f4f4ef"><PRE>
+CHANGELOG V0.27
+
+[+] More complete battle system, depending on stats and items.
+[+] Basic item stats, +dam +dod +hit +ac, hp/mp, stats
+[+] Elemental system adding light/dark, fire,water,air and earth.
+[+] Attack and melee bonus for firstblow and backside weakness.
+[+] Kill lock/steal protection , finally working properly!
+[+] Arrow items type (need to equipe visible arrows to use bow)
+[+] Upgradable locker storage capacity (to 60max)
+[+] PK (player vs player) map type added.
+
+[*] Inner group member health updates (health bars)
+[*] Dynamic casting delay system (blinking text)
+[*] Boss types can be set to non killsteal protected.
+[*] Find and Loc commands, for easy data lookups.
+
+[%] Minor group glitches fixed (ghost groups, double joins etc)
+</PRE></td></tr><table><br/>
+
+<table cellpadding="20"><tr><td width="1100" bgcolor="#f4f4ef"><PRE>
+CHANGELOG V0.26
+
+[!] EO quest engine implemented (eo+ engine)
+
+[+] Character book information window added.
+[+] Character classes system/tree (warrior, priest, mage etc)
+[+] Script loader/parser, loading of script files.
+[+] Script interpreter, script execution in gameserver.
+[+] Storing quest progress per character in database.
+[+] Hp/Mp drain map (poison air map)
+[+] Spike tiles / trapped tiles
+
+[*] Interface improvements and layout improvements.
+[*] Quest progress popup, to track your active quests.
+[*] Protected gfx resources from being altered/imported.
+[*] Reduced client discspace by 80% (120MB -> 17MB)
+ 
+[%] Random npc spawning fixed, auto-click fix.
+[%] Semi blend fix (stretching blt's)
+[%] Better anti-speed detection
+[%] Drop/trade while being into jail fix
+[%] Player drop steal fix
+[%] Arena wait-line cut fix
+</PRE></td></tr><table><br/>
+
+<table cellpadding="20"><tr><td width="1100" bgcolor="#f4f4ef"><PRE>
+CHANGELOG V0.25
+
+[+] Playable instruments (skill)
+[+] Santuary/citizenship system added.
+[+] Name of spell shows above caster.
+[+] Advanced spell render code.
+[+] Special Wings layer on character.
+[+] Extra character race layers (orc,panda,skeleton)
+[+] Dynamic map SFX hotspots (waterfalls,lava etc)
+[+] Drop steal protection added (server-side)
+
+[*] Bug fixes on skill interface panel.
+[*] Extra chat tab for party/guild communications.
+[*] Reduced global chat bandwidth, data on demand.
+
+[%] Spell panel select/click bug fixed.
+[%] Chinese-skin hat attack bug fixed.
+[%] Doorkey glitch bug fixed.
+[%] Craft overweight bug fixed.
+[%] Effect potion bug fixed.
+</PRE></td></tr><table><br/>
+
+<table cellpadding="20"><tr><td width="1100" bgcolor="#f4f4ef"><PRE>
+CHANGELOG V0.24
+
+[+] Server database i/o on seperate thread.
+[+] Server thread synchronizing buffers.
+[+] Stat points + custin stat points distribution.
+[+] Skill points + custom skill distribution.
+[+] Hp/mp/so progression + dynamic bonus system.
+[+] Priest npc type, to perform marriage ceremony.
+[+] Law npc type, to change registration status.
+[+] Learn npc type, learn new skills.
+[+] Npc parent/child behaviour added.
+[+] interface: Help menu added.
+
+[*] Map position and SP memory security checking.
+[*] 100% cpu fix, cpu-friendly render timer.
+[*] security warnings at login added (random tip)
+[*] softpad login system, to stop keyloggers.
+[*] Admin peek skills added, to help players better
+[*] Stat reset option added.
+[*] D/C while loading game fixed (loading forever)
+[*] Change character while loading game fixed.
+
+[%] Blocktransfer mode didnt show special effects (fixed)
+[%] Memory check routines (anti tsearch)
+</PRE></td></tr><table><br/>
+
+<table cellpadding="20"><tr><td width="1100" bgcolor="#f4f4ef"><PRE>
+CHANGELOG V0.23
+
+[+] Arena protocol support + kill counters.
+[+] Menu layout changes.
+
+[*] Server packet hardening, increased security.
+[*] Auto Admin HD/MAC ban routines.
+[*} Auto Speed detection intervals.
+[*] Admin move through player movement.
+[*] Whisper ignore system on server side.
+
+[%] menu fix for deleting the third character.
+[%] server memmory leak fixes.
+</PRE></td></tr><table><br/>
+
+<table cellpadding="20"><tr><td width="1100" bgcolor="#f4f4ef"><PRE>
+CHANGELOG V0.22
+
+[!] Release of the advanced server software.
+
+[+] mouse wheel support in client.
+[+] clipboard paste support in chat system.
+
+[*] New randomized menu layout system.
+[*] integrated arena system, private combat.
+[*] improved server side coding (speed)
+[*] server database cache systems (speed)
+[*] delete screenshot button in screen viewer.
+[*] prefetched characters names in eo-irc.
+
+[%] disconnection message are showing again.
+[%] junk button fixed, deleted old item on click.
+[%] xp large window header, in window mode fixed.
+</PRE></td></tr><table><br/>
+
+<table cellpadding="20"><tr><td width="1100" bgcolor="#f4f4ef"><PRE>
+CHANGELOG V0.21
+
+[+] interface: magic managment panel
+[+] interface: skill managment panel
+[+] hotkey bind system added [f1-f8+shift]
+[+] targeting system (self,target,group,area)
+[+] music instrument class
+
+[*] log: EXP points logged in SYS tab.
+[*] log: dropped item name logged in SYS tab.
+[*] TP is used in game now
+[*] SP is used in game now
+[*] share EXP (group mode)
+
+[%] drop steal fix
+</PRE></td></tr><table><br/>
+
+<table cellpadding="20"><tr><td width="1100" bgcolor="#f4f4ef"><PRE>
+CHANGELOG V0.20
+
+[+] dls, esf file support , binairy file i/o
+
+[*] anti idle / idle indication system
+
+[%] midnight crash bug fixed.
+[%] server reporting it is full (too many connections)
+{%] drop steal protections, F12 & double drop fix
+[%] language filter now work on townboards
+[%] unlore/chest bug fixed.
+[%] better tuned speedhack filters
+[%] item duplication bug fixed
+[%] guild description bug fixed
+</PRE></td></tr><table><br/>
+
+<table cellpadding="20"><tr><td width="1100" bgcolor="#f4f4ef"><PRE>
+CHANGELOG V0.19
+
+[+] message (town) boards.
+[+] jukebox objects / change music.
+[+] new movements for jumping and water.
+[+] item types: lore , cursed , cure.
+[+] screenshot browser module.
+[+] irc module.
+
+[*] advanced EXP screen, deep inside exp info.
+[*] anti-block, pass-through code (keep moving into player)
+[*] jail isolation, no more global talk / drop or trading.
+[*] guild name can contain up to 24 characters now.
+[*] improved configuration module.
+[*] faster player/npc sort.
+
+[%] TNL now properly showed in status panel.
+{%] craft items are showing gender now.
+[%] sound/music config bug fixed.
+</PRE></td></tr><table><br/>
+
+<table cellpadding="20"><tr><td width="1100" bgcolor="#f4f4ef"><PRE>
+CHANGELOG V0.18
+
+[+] layer: damage & hitpoint indications.
+[+] hitpoints: npc can take damage.
+[+] hitpoints: players can take damage.
+[+] hitpoint regeneration (every 2 minutes)
+[+] battle system: players can die / death .
+[+] battle system: exp / tnl / level up system.
+[+] battle system: simple AI attack patterns.
+[+] social: partner / marriage system.
+[+] item effect: HP potion healing.
+
+[*] render-on-demand engine (fast sprite render engine)
+[*] server priority login system.
+
+[%] server busy message after loading game fixed.
+[%] bow 'shoot through wall' fixed.
+</PRE></td></tr><table><br/>
+
+<table cellpadding="20"><tr><td width="1100" bgcolor="#f4f4ef"><PRE>
+CHANGELOG V0.17
+
+[!] new website and forum design
+
+[+] visual magic systems, for players and npcs.
+[+] sprite layer: resting / sitting down.
+[+] sprite layer: archer attack.
+[+] game bars for Hp, Mp, Sp and Tnl.
+
+[%] speedhack should not detect minor lag anymore.
+[%] archery range in arena fixed.
+</PRE></td></tr><table><br/>
+
+<table cellpadding="20"><tr><td width="1100" bgcolor="#f4f4ef"><PRE>
+CHANGELOG V0.16
+
+[+] npc guilds (create,join,leave guild)
+[+] generated page for website : top 100 guild list
+[+] minimap layout system, hide/show.
+[+] cave wall system, for realistic cave structures.
+[+] server and client speedhack checking.
+[+] admin commands : jail player, warp to map
+
+[*] item addition : effect potions
+[*] layer improvements : animated wall & objects.
+[*] guild chat channel, chat to online guild members.
+[*] added a guild memberlist lookup option.
+[*] playerlist filter for online guild members.
+[*] paperdoll mouse-over showing item names.
+</PRE></td></tr><table><br/>
+
+<table cellpadding="20"><tr><td width="1100" bgcolor="#f4f4ef"><PRE>
+CHANGELOG V0.15
+
+[!] client and server EXE protection.
+[!] server software fully patched with stable uptime.
+
+[+] enf, edf & esf file support , binairy file i/o
+[+] additional client setup (config) program included.
+[+] mouse hover ( showing npc name)
+[+] managed friend & ignore lists.
+[+] private item stash / locker objects added.
+[+] npc item crafting (create items)
+[+] npc bank (withdraw/desposit money)
+[+] npc shops (buy/sell items)
+[+] npc barbers (buy new haircut)
+[+] ground (tiles) can be animated.
+
+[*] npcs can (random) talk now.
+[*] global and admin channels set to admin only.
+[*] added chattab for a new global chat channel :)
+[*] security: login will be disabled after 3 tries.
+[*] security: client EXE structure + encryption.
+[*] extra confirmation on trade OK button.
+[*] delay after deleting an item from trade.
+[*] item drag abort when other player close trade.
+[*] listbox enhanced with (alpha blend) hilights.
+[*] additional information popups on overweight.
+[*] autosave SQL will send only needed update fields.
+[*] autoaction on walking into chest,door,locker or chair.
+[*] minimap edges fix + friendly/hostile npc indications.
+[*] friendlist quick whisper (left click on name)
+[*] friendlist hilights online friends.
+[*] playerlist filter button.
+
+[%] item out of bound/disappearing item bug fixed.
+[%] system chat empty line (pointer) bug fixed.
+[%] sorting alike names in playerlist bug fixed.
+[%] changing boots (not updating on screen) bug fixed.
+[%] empty text balloon bug fixed (on some pc's only)
+[%] proper weight update after trading items.
+[%] trading gold will now update properly.
+[%] attack chair bug fixed.
+</PRE></td></tr><table><br/>
+
+<table cellpadding="20"><tr><td width="1100" bgcolor="#f4f4ef"><PRE>
+CHANGELOG V0.14
+
+[!] gameserver connection to database has been fixed.
+
+[+] safe trade system: trading windows.
+[+] signs on map are clickable / readable now.
+[+] chests can be opened now (items spawn inside)
+[+] doors can be opened and closed.
+[+] keys to operate chests and doors.
+[+] drunken mode, speajkinggg cownffuseddd
+[+] hairdye potions, change hair color.
+
+[*] ban/kick for admins, blocks a client for 15 minutes.
+[*] anti multiclient systems in client and server side.
+[*] more accurate speedhack checking (faster trigger)
+[*] protected item drops (anti looting)
+[*] clicking on a playerlist will whisper to the person.
+[*] idle timer, removes players longer then 30 min afk.
+
+[%] 'your account is already logged on' bug fixed
+[%] dropping 0 items made the item dissapear.
+[%] value slider on 0 showed out of the message box.
+[%] the inventory appeared to delete/duplicate items. 
+[%] item lose, when other player dc in trade session.
+[%] disabled new trade requests while trading session.
+[%] sitting movement bug, moving while stting down.
+[%] exit button is enabled while loading a new map.
+[%] dissapearing items in chest bug fixed.
+[%] minor client bugs (external exceptions)
+[%] trade security glitch fixed.
+</PRE></td></tr><table><br/>
+
+<table cellpadding="20"><tr><td width="1100" bgcolor="#f4f4ef"><PRE>
+CHANGELOG V0.13
+
+[+] admin channel, admin 2 admins chat
+[+] client server system messages (packets)
+
+[*] npc spawn delay after server (re)start.
+[*] extra item clean sweep after server (re)start.
+[*] more controlled server shutdown sequence (delayed)
+[*] auto (re)positioning, in case a player is too lagged.
+[*] auto warp / anti blocking timers.
+[*] clicking on a chatline will whisper to the person.
+[*] interaction on/off (show grouping, trade requests etc)
+
+[%] surface transfer fixes, black or messy graphics.
+[%] invalid pointer operations on server side fixed.
+[%] server auto-save fixed (0x0eefade errors / thread bug)
+[%] crawling with F12 while sitting bug fixed.
+[%] warping while sitting bug fixed. (sitting after warp)
+[%] fixed : Fullscreen mode failed on certain computers
+[%] frozen npc spawns (non moving npcs) fixed.
+[%] group join / invite failures are now fixed.
+[%] chatlog now appends lines to the file.
+</PRE></td></tr><table><br/>
+
+<table cellpadding="20"><tr><td width="1100" bgcolor="#f4f4ef"><PRE>
+CHANGELOG V0.12
+
+[+] interface: endless news panel
+[+] interface: game options & settings panel
+[+] interface: paperdoll window
+[+] item transaction: pick-up, drop, junk items.
+[+] item usage (warp scrolls, exp scrolls, potions etc)
+[+] item transaction: equipment and removal of items
+[+] money / EXP support (up to 1.000.000.000 on character)
+[+] GUI drop drag item, button and popup message support.
+[+] GUI drag and drop areas for items.
+[+] join and welcome messages, controlled by server.
+[+] guardian and GM indicators in playerlist.
+[+] X mark on mouse down showing path destination.
+[+] windows registry key read & write support for inventory.
+[+] map earthquake effects (from small to heavy quakes)
+[+] NPC will slowly fade away when it was killed.
+[+] basic NPC (re)spawn system
+[+] admin mute controls.
+
+[*] money is now always showing in inventory (zero money)
+[*] numpad is enabled in the menu (0 to 9 & .)
+[*] redesign and improvement of interface panels.
+[*] 5 more item props: size, weight, duration, element.
+[*] online playerlist is sorting on character name.
+[*] curse filter additions.
+
+[%] lagged walk into wall / wall stuck bug has been fixed.
+[%] chair rotation bug while pressing F12 has been fixed.
+[%] wrong chat-panel hint msg fixed (character skills)
+[%] new connection methodes , fixing sync lookup errors.
+[%] fixed turning on sound/music with no available devices.
+[%] game can now start with no available sound devices.
+[%] double received playerlist entries (lagged packet) fix.
+[%] items visible outside inventory bug is fixed.
+</PRE></td></tr><table><br/>
+
+<table cellpadding="20"><tr><td width="1100" bgcolor="#f4f4ef"><PRE>
+CHANGELOG V0.11
+
+[+] map layer: items
+[+] eif file support , binairy file i/o
+[+] client auto-item updater, eif file downloader.
+[+] mouse hover ( showing name item ) 
+[+] server item properties memory map.
+[+] client item properties memory map.
+
+[*] mouse cursor is also detecting items now
+[*] improved item-sort, 1000+ items on screen = FAST
+[*] button '@' in account creation, 'cannot type @ bug'
+[*] MMTimer intervals checked with timestamps, security
+[*] server improved automatic flood protections.
+[*] server dataflow security (packet/sec, peek detection)
+[*] server data packet-size security
+[*] improved 'hollow' range checking on server side
+[*] casting is now assigned to the numpad 0 key
+
+[%] fix: not showing items, when warping to new map
+[%] fix: adjusted edit filters for azert keyboard (mode 3)
+[%] fix: also showing map name on first enter.
+[%] azert  keyboard, m,% fix (mode 3)
+[%] exit button does not dissapear when loading new map.
+[%] fix: flood protection, locking for 40 seconds.
+[%] fix: flood protection, showing warnings in statusbar
+</PRE></td></tr><table><br/>
+
+<table cellpadding="20"><tr><td width="1100" bgcolor="#f4f4ef"><PRE>
+CHANGELOG V0.10
+
+[+] map layer: overlayed top layer
+[+] basic music engine: map music triggers.
+[+] interface: map overview projector
+[+] interface: drop & drag inventory panel
+[+] visual itemlayer on the map
+[+] weapon & shield equipement indications (left corner)
+[+] AZERTY keyboard support (mode 3)
+[+] server shutdown sequence (save players first)
+
+[-] Right groupbar removed from game interface.
+[-] Hp/Mp bar indicators removed from lower interface.
+
+[*] interface: improved group panel layout'
+[*] server: less busy signals when logging character.
+[*] server equiped with packet-flood detect & protection.
+[*] server equiped with a lag / movement queque.
+[*] bigger and improved game view area.
+[*] lower interface changed + interface decoration.
+[*] mini overlay map improved lay-out.
+
+[%] top map layer placement has been changed.
+[%] double blt's in minimap fixed (c and p tiles)
+[%] change password bug fixed (up to 16 chars)
+[%] fixed clipper problems in GameBltAlphaFast()
+[%] account creation failures are fixed now.
+[%] mouse click on ristricted warps is ignored now.
+[%] whisper when private tab focused, fixed
+[%] sounds will not be heared when minimized game.
+[%] keyboard will not work when de-activated game.
+[%] read-error 0x00000008 when exit during intro fixed.
+</PRE></td></tr><table><br/>
+
+<table cellpadding="20"><tr><td width="1100" bgcolor="#f4f4ef"><PRE>
+CHANGELOG V0.9
+
+[+] map layer: desk counter , to create better shops
+[+] map layer: blended layer, for shadow, fog, fire etc
+[+] map warps got level restriction attribute now.
+[+] full group-system [join, invite, leave, disband..]
+[+] leader of party can remove any member.
+[-] movement speed reduced with 15%, prevents some lag.
+
+[*] security: checked SQL strings to prevent wildcards.
+[*] render improvement on large maps, x/y restrictions.
+[*] server uses less base RAM , 1.2 MB was 3,6 MB before.
+
+[%] account creation didnt work, is fixed again.
+[%] pathfinder jam while standing lower edge of map fixed.
+[%] group invite didnt work, its fixed again.
+</PRE></td></tr><table><br/>
+
+<table cellpadding="20"><tr><td width="1100" bgcolor="#f4f4ef"><PRE>
+CHANGELOG V0.8
+
+[+] dynamic npc surface size detection.
+[+] custom npc size + render placement.
+[+] player popup menu, when right-click on player.
+[+] interface: group mode, join/leave/disband group
+[+] player ignore-list
+
+[*] server recoded, count/index byte removed.
+[*] 'hollow' range checking on server side (bandwidth)
+[*] npc server speed, freeze npcs on empty maps.
+[*] support for large map objects. (buildings etc)
+[*] timered flood protection in chat system.
+
+[%] random access violation 0x00010 fixed.
+[%] dissapearing of self typed chat lines fixed.
+[%] server npc collision detection.
+[%] delayed ENTER / send line in chat system.
+[%] brought back minimum chat line to 1 character.
+[%] spaces in character names are no more allowed.
+[%] name-over fix, when over more then one player.
+[%] overflow/server crash fixed in npc-range packet
+[%] fixed refresh packet, npc displacement
+[%] npc crash bug, actually a bug in a tcp/ip packet.
+[%] NPC data deleted on exit & relog, old npc data.
+[%] more canvas objects to prevent weird font sizes
+</PRE></td></tr><table><br/>
+
+<table cellpadding="20"><tr><td width="1100" bgcolor="#f4f4ef"><PRE>
+CHANGELOG V0.7
+
+[+] sprite layer: custom weapon
+[+] sprite layer: custom shield
+[+] sprite effect : weapon trail on attack animations.
+[+] see-through, when standing behind a wall or object.
+[+] basic npc support: spawn and movement.
+[+] range checking on npc, to decrease data traffic.
+[+] dynamic npc surfaces, display tiny & huge npc's.
+
+[*] enlarged sprite frames to contain weapons & shield.
+[*] alphaBlt exception handling unlock surfaces on error.
+[*] Added surface status and restore in sprite render.
+[*] Mouse cursor change on action points (chairs etc)
+[*] Emotions on face are displayed twice as long.
+
+[%] fixed server check on sit down / stand up.
+[%] fixed displaced hat positions in sprite attack frames.
+[%] fixed wall placement (depth problem large weapons)
+[%] pathfinder fix, mouse click on chair will find path.
+[%] pathfinder fix, when standing on edge of map
+[%] memory exception error fixed (clipper malfunction)
+[%] fixed npc range packets (out of bound [1] error)
+</PRE></td></tr><table><br/>
+
+<table cellpadding="20"><tr><td width="1100" bgcolor="#f4f4ef"><PRE>
+CHANGELOG V0.6
+
+[!] protocol changes tcp/ip: encoded / uncoded packets.
+
+[+] auto-update system for new world maps.
+[+] loading screen while downloading new map.
+[+] game pop-up messages on client (outside menu)
+[+] uncoded packets for faster map processing.
+[+] map name is showed when enter new map.
+[+] client movement checking, not server-only now.
+[+] real-time pathfinder on mouse-click, A* math.
+[+] international keyboard and language support.
+[+] global & announcement chat ability.
+[+] exit to menu, on exit button or disconnect.
+[+] emotions (numpad 1-9 & .)
+[+] screen refresh (F12)
+
+[*] optimized graphic loaders on client side.
+[*] menu, interface, sprite loaders merged to 1 loader.
+[*] text messages (string table) moved to a .dat file.
+[*] optimized movement checking on server.
+[*] file architecture changed to .edf .emf & .egf.
+[*] inactive chat tabs highlight when received new text.
+[*] ALT-F4 command is trapped and ignored.
+
+[%] fixed the auto-update map after login sequence.
+[%] alt-tab black screen fix, surface restore routines.
+[%] too many open file handles on client are closed now.
+[%] the pathfinder is synced on a timer, no more jumpy.
+[%] memory leak fix: in static sprite and map loaders.
+[%] keyboard buffer overflow, has become more stable.
+[%] font-size fix, font was showing too big sometimes.
+[%] ignore zero warp fix: undefined warp did not load.
+[%] double sit fix: two or more characters on 1 chair.
+[%] forgot to add BLT_WAIT in tile render sequence.
+</PRE></td></tr><table><br/>
+
+<table cellpadding="20"><tr><td width="1100" bgcolor="#f4f4ef"><PRE>
+CHANGELOG V0.5
+
+[+] quite fast binairy map-file reading / writing.
+[+] server supports map-file up / downloading.
+[+] map flags: block, door, chest, chair, warp.
+[+] map settings : music, enviroment, pk rules.
+[+] map layer: topwall.
+
+[*] optimized packet decoders on server side.
+[*] optimized sql string constructors on server side.
+[*] optimized 'for loops' on client side a bit.
+[*] server is updated with new mysqldac components.
+[*] improved language filters on client and server side.
+[*] mouse/tile cursor has become more accurate.
+</PRE></td></tr><table><br/>
+
+<table cellpadding="20"><tr><td width="1100" bgcolor="#f4f4ef"><PRE>
+CHANGELOG V0.4
+
+[!] protocol changes in tcp/ip communication
+
+[+] addition of 'gloves' item
+[+] field 'online' to enable the website online player list
+[+] field player privileges (player,admin,guardian,gm,hgm)
+[+] server: resets all online fields when launched
+[+] server: no longer getting a connection overflow
+
+[*] client bitmap loaders are stable now.
+[*] server is protected by serial code, to prevent pirating.
+[*] mouse on tile position is much better now.
+
+[%] fixed the hat transparent problem in 16bit mode.
+[%] new exit codes to prevent problems with MSN.
+[%] white rectangles in hat layer are no longer visible.
+[%] small fix in ini file loaders fixed.
+[%] chat filters are now working as should.
+[%] long chat lines will be displayed longer in a baloon.
+[%] long chat lines will be wrapped in the chat area
+[%] chat lock will not scroll down when 'locked' anymore
+</PRE></td></tr><table><br/>
+
+<table cellpadding="20"><tr><td width="1100" bgcolor="#f4f4ef"><PRE>
+CHANGELOG V0.3
+
+[+] full wall and ceiling system 
+[+] map sorting for objects and players (depth) 
+[+] map layer: chairs 
+[+] sprite layer: custom hair
+[+] sprite layer: custom boots 
+[+] sprite layer: custom armor 
+[+] sprite layer: hats / maks 
+[+] auto refresh sprite layers
+[+] server: account signup lock
+[+] server: game access lock
+
+[*] improved client configuration file layout.
+[*] improved server configuration file layout.
+[*] more client configuration options, loaders, size etc.
+
+[%] fix in sprite pre-render thread 
+[%] fix in launching game with 'nosound' selected 
+[%] serveral base sprites have been edit 
+[%] dunaimic memory loaders use 1 bitmap object 
+[%] fixed double color key bug in the hat/mask layers
+[%] fixed some minor bugs
+</PRE></td></tr><table><br/>
+
+<table cellpadding="20"><tr><td width="1100" bgcolor="#f4f4ef"><PRE>
+CHANGELOG V0.2
+
+[+] surface cache system for map objects. 
+[+] map with different layers for walls, objects, tiles. 
+[+] timer on speed move/fight/cast server sided. 
+[+] sprite animations to cast.. 
+[+] sprite animations to fight.. 
+[+] sprite animations to sit down.. 
+[+] mouse hover ( showing name player ) 
+[+] whisper, public/private/global chat system 
+[+] privat / public chat system 
+[+] interface: who is online list 
+
+[*] new packet builders ( on server and client side ) 
+[*] new packet parser ( on server and client side ) 
+[*] new packet encoding ( lot faster ) 
+[*] text baloon now moves when you fight or sit down. 
+[*] frame rate controller 
+[*] several optimizations in client. 
+
+[%] minor surface restore bugs 
+[%] double chatline bug fix. 
+[%] auto private chatting 
+[%] sprite displacement in some male aniamtions 
+[%] scroll buttons in interface did not respond 
+[%] sprite animations for fighting and casting. 
+[%] ALT-F4 trapping, fixed the crashed when exit the game. 
+[%] surface restore in client side (alt tab problems). 
+[%] double chat lines have been fixed (server sided). 
+[%] shared bitmap loading, prevent crashes. 
+[%] delayed bitmap loading (prevents frame jumps)
+[%] sprite cannot move through eachother anymore. 
+[%] database problem when creating new account 
+[%] several memory leaks in client. 
+[%] fixed some minor bugs
+</PRE></td></tr><table><br/>
+
+<table cellpadding="20"><tr><td width="1100" bgcolor="#f4f4ef"><PRE>
+CHANGELOG V0.1
+
+[+] create and validating accounts 
+[+] login with account
+[+] create / modify and delete characters 
+[+] character skin colors 
+[+] character gender (male female) 
+[+] game edit and message system 
+[+] version checking 
+[+] character walk animations 
+[+] build-in support for alpha blending (0 - 100%)* 
+[+] full player movement synchornization 
+[+] movement / chat broadcasting by server 
+[+] buildin screenshot / capture 
+[+] chat playback area + chat balloons ingame 
+[+] mysql support + character auto save when exit 
+[+] database support for custom pants, armor, hat etc. 
+[+] range checking, to decrease data traffic for server. 
+[+] secure packet transfer (encryption) 
+[+] login sequence + security are ok now. 
+[+] range checking 
+[+] interface: chat panel 
+[+] interface: status panel 
+
+[+] server: support for player classes 
+[+] server: support for player guilds 
+[+] server: now supports IP block / ban 
+[+] server: now support HD serial ban 
+[+] server: now support account ban 
+
+[*] keyboard backspace has speed up 
+[*] keyboard is better responding to chat input 
+[*] client range has optimized
+[*] client has delete delay for deleting player objects 
+[*] double account logging disabled 
+
+[%] Intro (vult-r) has been recoded to prevent crash
+[%] chaging direction first then move sprite. 
+[%] mouse scaling in windowed mode. 
+[%] mirror blt'ers 
+[%] minor memory leaks 
+[%] player range 
+[%] client range has optimized 
+[%] security fixes 
+</PRE></td></tr><table><br/>
+
+
+		</td>
+	</tr>
+
+
+	</table>
+
+	<br/><br/>
+	<br/><br/>
+	</td>
+</tr>
+
+<tr>
+	<td bgcolor="#f0d8a4" height="100" align="center">
+
+			<table width="790">
+			<tr>
+				<td width="340" align="left">
+				<img src="http://images.endless-online.com/images/pleasevote.jpg" width="160" height="49">
+				<a href="http://www.mmorpg100.com/in.php?id=67" target="_blank"><img src="http://images.endless-online.com/images/vote2.gif" width="83" height="49" border="0" alt="free mmorpg games" /></a>
+				<a href="http://www.mpog100.com" target="_blank"><img src="http://images.endless-online.com/images/vote1.gif" width="83" height="49" border="0" alt="free online rpg games" /></a>
+				</td>
+				<td width="450" align="right">
+				<font size="3" face="Arial" color="#000000">
+				<a href="http://www.endless-online.com" class="link">Endless Online</a> | 
+				<a href="http://www.endless-online.com/contact.html" class="link">Contact</a> | 
+				<a href="http://www.endless-online.com/privacypolicy.html" class="link">Privacy Policy</a> | 
+				<a href="http://www.endless-online.com/disclaimer.html" class="link">Disclaimer</a>
+				</td>
+			</tr>
+			</table>
+		</font>
+	</td>
+</tr>
+</table>
+
+</body>
+</html>
