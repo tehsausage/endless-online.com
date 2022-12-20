@@ -1,0 +1,576 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+  <meta name="viewport" content="width=max-device-width, user-scalable=yes">
+  <meta name="keywords" content="online rpg, free rpg, mmorpg, mmrpg, world, roleplay, endless online, anime, manga"/> 
+  <meta name="description" content="Learn more about the latest client."/> 
+  <link rel="shortcut icon" href="../favicon.ico" />
+  <link rel="stylesheet" type="text/css" href="../style.css" />
+  <title>Endless Online - Massive online RPG</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table width="100%">
+<tr>
+	<td bgcolor="#000000" height="100" align="center">
+		<font size="5" face="Arial" color="#FFFFFF">
+		<a href="../index.html" class="headerlink">HOME</a> | 
+		<a href="../archives.html" class="headerlink">ARCHIVES</a> | 
+		<a href="../gallery.html" class="headerlink">GALLERY</a> | 
+		<a href="../links.html" class="headerlink">LINKS</a> | 
+		<a href="../downloads.html" class="headerlink">DOWNLOADS</a> | 
+		<a href="../getting_started.html" class="headerlink">GETTING STARTED</a> | 
+		<a href="../credential.html" class="headerlink">CREDENTIAL</a>
+		</font>
+	</td>
+</tr>
+
+<tr>
+	<td background="header.jpg" height="500" align="center">
+		<a href="http://www.endless-online.com"><img src="../endless.png"></a>
+	</td>
+</tr>
+
+<tr>
+	<td height="20" align="center">
+	</td>
+</tr>
+
+<tr>
+	<td align="center">
+
+
+		<table width="1200" cellpadding="20">
+		<tr>
+			<td align="center">
+
+			<font size="7" face="Arial" color="#000000">
+			<b>Info: </b> Deep Client Tech
+			</font>
+			<br/>
+			<font size="5" face="Arial" color="#000000">
+			Information about Endless Online 0.3.X - 12 Nov 2022
+			</font>
+		</td>
+	</tr>
+
+	<tr><td></td></tr>
+
+	<tr>
+		<td align="center"  height="300" bgcolor="#e8e7dd">
+			<font size="3" face="Arial" color="#000000">
+			Updates are offered as a pack of <b>optional</b> executable replacements. This way, players and server admins are free to try.<br/>
+			Do not forget to backup your current Endless client files before making changes.<br/><br/>
+		
+			<table width="900"><tr><td align="center" bgcolor="#f9f9f9" style="padding:25px">
+				<b>NON EO-CLONE PLAYERS</b><br/>
+				Please wait and use the regular update program of your server.
+			</td></tr></table>
+			<br/><br/>
+			
+			<table width="900"><tr><td bgcolor="#edecea" style="padding:25px">
+
+				<b>Summary:</b><br/><br/>
+				- server owners should use the build version. Deep updates are changing minor version.<br/>
+				- additional there is a setup.ini key BuildVersion=X that will do this without hex-editing.<br/>
+
+			</td></tr></table>
+			<br/>
+			</font>
+
+		</td>
+	</tr>
+
+	<tr><td></td></tr>
+
+	<tr>
+		<td align="center" bgcolor="#eeeeee" height="200">
+			<table width="840"><tr><td>
+			<font size="4" face="Arial" color="#000099">
+			New Packet | Account Config Packet</font>
+			</td><td align="right">
+			<font size="4" face="Arial" color="#AAAAAA">
+			last change: 7 nov 2022</font>
+			</td></tr></table>
+
+			<table width="900"><tr><td style="padding:25px" bgcolor="#e8e8e8">
+			<font size="3" face="Arial" color="#000000">
+			<b>S->C : Account Creation Wait Timer:</b>
+			<pre>
+Sever Packet(
+               id=002:Account,               // length: 1byte
+               action=220:Config,            // length: 1byte
+               timer                         // length: 2bytes , values accepted: ( 10 - 600 seconds )
+            )
+			</pre>
+			</td></tr>
+			<tr><td style="padding:25px" bgcolor="#e8e8e8">
+
+			<font size="2" face="Arial" color="#000000"><b>notes:</b>
+			<i>Optional server config(220) reply packet, should be send back instantly after receiving the Account(2) Request packet. This is the moment after the server accepted the first packet send out by the client to check if the account name is free and acceptable. As a result the account creation timer will be initialized with a faster or slower delay (in secs)</i>
+			</font>
+			</td></tr></table>
+		</td>
+	</tr>
+
+	<tr><td></td></tr>
+
+	<tr>
+		<td align="center" bgcolor="#eeeeee" height="200">
+			<table width="840"><tr><td>
+			<font size="4" face="Arial" color="#000099">
+			New Packet | Login Config Packet</font>
+			</td><td align="right">
+			<font size="4" face="Arial" color="#AAAAAA">
+			last change: 7 nov 2022</font>
+			</td></tr></table>
+
+			<table width="900"><tr><td style="padding:25px" bgcolor="#e8e8e8">
+			<font size="3" face="Arial" color="#000000">
+			<b>S->C : Login Config Packet:</b>
+			<pre>
+Sever Packet(
+               id=004:Login,                // length: 1byte 
+               action=220:Config,           // length: 1byte
+               maxSkins                     // length: 2bytes , max ammount of unlocked skins.
+               maxHairModals                // length: 2bytes , max ammount of choicable hair modals.
+	)
+			</pre>
+			</td></tr>
+			<tr><td style="padding:25px" bgcolor="#e8e8e8">
+
+			<font size="2" face="Arial" color="#000000"><b>notes:</b>
+			<i>server could send this config(220) packet instantly after receiving and accepting the first Login request packet send by the client (the packet containing username and password). The new setting packet will initalize the selectable options in the [Character Creation] dialog accordingly. Please be aware that more future settings could be added to this packet in the future.</i>
+			</font>
+			</td></tr></table>
+		</td>
+	</tr>
+
+	<tr><td></td></tr>
+
+	<tr>
+		<td align="center" bgcolor="#eeeeee" height="200">
+			<table width="840"><tr><td>
+			<font size="4" face="Arial" color="#000099">
+			New Packet | Boss(52)</font>
+			</td><td align="right">
+			<font size="4" face="Arial" color="#AAAAAA">
+			last change: 7 nov 2022</font>
+			</td></tr></table>
+
+			<table width="900"><tr><td style="padding:25px" bgcolor="#e8e8e8">
+			<font size="3" face="Arial" color="#000000">
+			<b>S->C : Boss Sync:</b>
+			<pre>
+Sever Packet(
+               id=052:Boss,                // length: 1byte 
+               action=240:Sync1,           // length: 1byte
+               npcHandle,                  // length: 2bytes , (map)spawnID of npc
+               npcID,                      // length: 2bytes , ID of npc
+               hp,                         // length: 3bytes , values accepted: ( 0 - 16194275 )
+               hp_perc,                    // length: 1bytes , values accepted: ( 0 - 100 )
+               killed,                     // length: 1bytes , values accepted: ( 0 - 1 )
+	     )
+			</pre>
+			</td></tr>
+			<tr><td style="padding:25px" bgcolor="#e8e8e8">
+
+			<font size="2" face="Arial" color="#000000"><b>notes:</b>
+			suggested usage: range- or mapwide broadcast when boss is hit and hurt ( reaction packet to melee, ranged or magic damage ) packet value [killed=1] will remove the bar showing the flashing skull animation. Optionally this packet could also be broadcasted when the boss heals itself.<br/><br/>
+			</font>
+			</td></tr></table>
+		</td>
+	</tr>
+
+	<tr><td></td></tr>
+
+	<tr>
+		<td align="center" bgcolor="#eeeeee" height="200">
+			<table width="840"><tr><td>
+			<font size="4" face="Arial" color="#000099">
+			New (sub)packet: Player(23)</font>
+			</td><td align="right">
+			<font size="4" face="Arial" color="#AAAAAA">
+			last change: 7 nov 2022</font>
+			</td></tr></table>
+
+			<table width="900"><tr><td style="padding:25px" bgcolor="#e8e8e8">
+			<font size="3" face="Arial" color="#000000">
+			<b>S->C : Update Player Sprite:</b>
+			<pre>
+Sever Packet(
+               id=023:Player,                // length: 1byte 
+               action=005:Update,            // length: 1byte 
+               playerHandle,                 // length: 2bytes , playerHandleID
+               mutationType=4:Skintype,      // length: 1byte , value: 4 (skin)
+               sound,                        // length: 1byte , values: 0 (nosound) >0 (withsound)
+               skinID                        // length: 1byte , skinID
+	      )
+			</pre>
+			</td></tr>
+			<tr><td style="padding:25px" bgcolor="#e8e8e8">
+
+			<font size="2" face="Arial" color="#000000"><b>notes:</b>
+			<i>Set and re-render the target-player (playerHandle/ID) with a new skin, packet added to support new item.type 7 ; Transformation</i>
+			</font>
+			</td></tr></table>
+		</td>
+	</tr>
+
+	<tr><td></td></tr>
+
+
+	<tr>
+		<td align="center" bgcolor="#eeeeee" height="200">
+			<table width="840"><tr><td>
+			<font size="4" face="Arial" color="#000099">
+			New (sub)packet: Player(23)</font>
+			</td><td align="right">
+			<font size="4" face="Arial" color="#AAAAAA">
+			last change: 7 nov 2022</font>
+			</td></tr></table>
+
+			<table width="900"><tr><td style="padding:25px" bgcolor="#e8e8e8">
+			<font size="3" face="Arial" color="#000000">
+			<b>S->C : Update Player Sprite:</b>
+			<pre>
+Sever Packet(
+               id=023:Player,                // length: 1byte  
+               action=005:Update,            // length: 1byte 
+               playerHandle,                 // length: 2bytes , playerHandleID
+               mutationType=5:Gender,        // length: 1byte , value: 5 (gender)
+               sound,                        // length: 1byte , values: 0 (nosound) >0 (withsound)
+               gender                        // length: 1byte , values: 0 (female) 1 (male)
+	     )
+			</pre>
+			</td></tr>
+			<tr><td style="padding:25px" bgcolor="#e8e8e8">
+
+			<font size="2" face="Arial" color="#000000"><b>notes:</b>
+			<i>Set and re-render the target-player (playerHandle/ID) with a new gender. This packet is currently NOT used, if one decide to use it this operation should be used with caution.</i>
+			</font>
+			</td></tr></table>
+		</td>
+	</tr>
+
+	<tr><td></td></tr>
+
+
+
+	<tr>
+		<td align="center" bgcolor="#eeeeee" height="200">
+			<table width="840"><tr><td>
+			<font size="4" face="Arial" color="#000099">
+			Extended/Changed packet: Barber(38)</font>
+			</td><td align="right">
+			<font size="4" face="Arial" color="#AAAAAA">
+			last change: 7 nov 2022</font>
+			</td></tr></table>
+
+			<table width="900"><tr><td style="padding:25px" bgcolor="#e8e8e8">
+			<font size="3" face="Arial" color="#000000">
+			<b>S->C : Barber Open Window:</b>
+			<pre>
+Sever Packet(
+               id=038:Barber,                // length: 1byte 
+               action=013:Open,              // length: 1byte 
+               handle,                       // length: 4bytes
+               maxHairModals,                // length: 2bytes , values accepted: ( 0 - 64008 )
+               basePrice,                    // length: 2bytes , values accepted: ( 0 - 64008 )
+               pricePerLevel                 // length: 2bytes , values accepted: ( 0 - 64008 )
+	     )
+			</pre>
+			</td></tr>
+			<tr><td style="padding:25px" bgcolor="#e8e8e8">
+
+			<font size="2" face="Arial" color="#000000"><b>notes:</b>
+			<i>The 0.2.X client will try read the extra bytes and initialize the barber Shop Window accordingly.</i>
+			</font>
+			</td></tr></table>
+		</td>
+	</tr>
+
+	<tr><td></td></tr>
+
+
+
+	<tr>
+		<td align="center" bgcolor="#eeeeee" height="200">
+			<table width="840"><tr><td>
+			<font size="4" face="Arial" color="#000099">
+			New Packet: Item(14)</font>
+			</td><td align="right">
+			<font size="4" face="Arial" color="#AAAAAA">
+			last change: 7 nov 2022</font>
+			</td></tr></table>
+
+			<table width="900"><tr><td style="padding:25px" bgcolor="#e8e8e8">
+			<font size="3" face="Arial" color="#000000">
+			<b>C->S : Requesting new Title:</b>
+			<pre>
+Sever Packet(
+               id=014:Item,                  // length: 1byte 
+               action=021:Public,            // length: 1byte
+               itemID,                       // length: 2byte , itemID (of the used title certificate)
+               seperator=255,                // length: 1byte
+               newTitleString,               // length: variable , string containing new title
+
+	     )
+			</pre>
+			</td></tr>
+			<tr><td style="padding:25px" bgcolor="#e8e8e8">
+
+			<font size="2" face="Arial" color="#000000"><b>notes:</b>
+			<i>The new 0.3.X clients will send this packet to support new item.type 28 (title certificate). On item usage (clicking item in inventory) the 0.3.X client will present input window where user(s) can enter his/her new title. Server can respond with normal ITEM RESULT packet using item type 28 to update the inventory count minus the used title certificate, the client will also play the scribble sound on receiving this ITEM RESULT packet.</i>
+			</font>
+			</td></tr></table>
+		</td>
+	</tr>
+
+	<tr><td></td></tr>
+
+
+
+
+
+	<tr>
+		<td align="center" bgcolor="#eeeeee" height="200">
+			<table width="840"><tr><td>
+			<font size="4" face="Arial" color="#000099">
+			Extended/Changed Packet: Recover(42)</font>
+			</td><td align="right">
+			<font size="4" face="Arial" color="#AAAAAA">
+			last change: 9 nov 2022</font>
+			</td></tr></table>
+
+			<table width="900"><tr><td style="padding:25px" bgcolor="#e8e8e8">
+			<font size="3" face="Arial" color="#000000">
+			<b>S->C : Updating recover stats:</b>
+			<pre>
+Sever Packet(
+               id=042:Recover,               // length: 1byte 
+               action=033:Group,             // length: 1byte
+               statpoints,                   // length: 2byte , number of unspend stat points
+               skillpoints,                  // length: 2byte , number of unspend skill points
+               hp_max,                       // length: 2byte , (extended) updated max hitpoints
+               tp_max,                       // length: 2byte , (extended) updated max techpoints (mana)
+               sp_max                        // length: 2byte , (extended) updated max specialpoints
+
+	     )
+			</pre>
+			</td></tr>
+			<tr><td style="padding:25px" bgcolor="#e8e8e8">
+
+			<font size="2" face="Arial" color="#000000"><b>notes:</b>
+			<i>The new 0.3.X clients also can be updated with hp_max, tp_max and sp_max values for complete syncing.</i>
+			</font>
+			</td></tr></table>
+		</td>
+	</tr>
+
+	<tr><td></td></tr>
+
+
+
+
+	<tr>
+		<td align="center" bgcolor="#eeeeee" height="200">
+			<table width="840"><tr><td>
+			<font size="4" face="Arial" color="#000099">
+			New <b>NEEDED</b> Packet: Paperdoll(30)</font>
+			</td><td align="right">
+			<font size="4" face="Arial" color="#AAAAAA">
+			last change: 7 nov 2022</font>
+			</td></tr></table>
+
+			<table width="900"><tr><td style="padding:25px" bgcolor="#e8e8e8">
+			<font size="3" face="Arial" color="#000000">
+			<b>S->C : Swap Item:</b>
+			<pre>
+Sever Packet(
+               id=030:Paperdoll,             // length: 1byte 
+               action=035:Swap,              // length: 1byte
+               playerHandle                  // length: 2bytes , playerHandleID
+               SLOT_CLOTHES=1,               // length: 1byte  , value : SLOT_CLOTHES (1)
+               SUBLOC=0,                     // length: 1byte  , value : subloc (0)
+               equipedBootsID,               // length: 2bytes
+               equipedArmorID,               // length: 2bytes
+               equipedHatID,                 // length: 2bytes
+               equipedWeaponID,              // length: 2bytes
+               equipedShieldID,              // length: 2bytes
+               equipedItemID,                // length: 2bytes , itemID of the equiped item inside paperdoll
+               equipedItemValue,             // length: 3bytes , updated inventory value of equipedItemID
+               equipedItemSlot,              // length: 1byte  , slotID of equipedItemID (not required, can be 0)
+               swappedItemID,                // length: 2bytes , itemID of the previously equiped item in paperdoll **
+               swappedItemValue,             // length: 3bytes , updated inventory value of swappedItemID **
+               updatedHpMax,                 // length: 2bytes , updated HP_MAX of the character
+               updatedMpMax,                 // length: 2bytes , updated MP_MAX of the character
+               updatedStatCon,               // length: 2bytes , updated strength of character
+               updatedStatInt,               // length: 2bytes , updated intelligence of character
+               updatedStatWis,               // length: 2bytes , updated Wisdom of character
+               updatedStatAgi,               // length: 2bytes , updated Agility of character
+               updatedStatCon,               // length: 2bytes , updated Constitution of character
+               updatedStatCha,               // length: 2bytes , updated Charisma of character
+               updatedDamageLo,              // length: 2bytes , updated Low damage stat
+               updatedDamageHi,              // length: 2bytes , updated High damage stat
+               updatedHitrate,               // length: 2bytes , updated Hitrate
+               updatedDodge,                 // length: 2bytes , updated Dodge
+               updatedArmor,                 // length: 2bytes , updated Armor
+	     )
+			</pre>
+			</td></tr>
+			<tr><td style="padding:25px" bgcolor="#e8e8e8">
+
+			<font size="2" face="Arial" color="#000000"><b>notes:</b>
+			<i>*Now that clients support hotkeys -and- allowing weapon and armor swaps, this packet SHOULD be used for updating the swapped weapon(s) and swapped armor(s) back to the client's inventory while keeping backward-compatibily. 
+			Please send the ITEM/SWAP packet instead of the ITEM/RESULT packet(s) if there was a previously equiped weapon back to inventory.<br/><br/>
+			Difference between ITEM_SWAP and ITEM_RESULT reply is 5 bytes containing previously swappedItemID and swappedItemValue.
+			</font>
+			</td></tr></table>
+		</td>
+	</tr>
+
+	<tr><td></td></tr>
+
+
+
+	<tr>
+		<td align="center" bgcolor="#eeeeee" height="200">
+			<table width="840"><tr><td>
+			<font size="4" face="Arial" color="#000099">
+			Extended/Changed Packet: Item(14)</font>
+			</td><td align="right">
+			<font size="4" face="Arial" color="#AAAAAA">
+			last change: 7 nov 2022</font>
+			</td></tr></table>
+
+			<table width="900"><tr><td style="padding:25px" bgcolor="#e8e8e8">
+			<font size="3" face="Arial" color="#000000">
+			<b>S->C : Item Give:</b>
+			<pre>
+Sever Packet(
+               id=014:Item,                  // length: 1byte 
+               action=026:Give,              // length: 1byte
+               itemID,                       // length: 2bytes , itemID
+               itemValue,                    // length: 3bytes , default: value to add
+               totalWeigtht,                 // length: 1byte , updated total weigth of all Inventory+Equiped items.
+               valueMode,                    // length: 1byte , values: 0 (itemValue is added) 1 (itemValue is set)
+	     )
+			</pre>
+			</td></tr>
+			<tr><td style="padding:25px" bgcolor="#e8e8e8">
+
+			<font size="2" face="Arial" color="#000000"><b>notes:</b>
+			<i>*OPTIONAL WORKAROUND* ( prefered packet : SWAP_ITEM ) Now that clients support hotkeys -and- allowing weapon and armor swaps, this packet COULD be used for updating the swapped weapon(s) and swapped armor(s) back to the client's inventory while keeping backward-compatibily. 
+			For example if the server detected an equiped weapon this packet should be send along with the ITEM/RESULT packet(s) to add the previously equiped weapon back to inventory.<br/><br/>
+			The new extended 'valueMode' byte can be set to 0(default) to add the itemValue (itemValue should always be 1 in this case)<br/>
+			The new extended 'valueMode' can be set to 1 to set the value to the current value of the item. ( for example player->hasItem(itemID) )</i>
+			<br/><br/><b>future note:</b> Inventory backlog+recode including a ITEM-SWAP pascket should be added in 'breaking updates' later for more elegant solution.
+			</font>
+			</td></tr></table>
+		</td>
+	</tr>
+
+	<tr><td></td></tr>
+
+
+	<tr>
+		<td align="center" bgcolor="#eeeeee" height="200">
+			<font size="7" face="Arial" color="#000000">
+			Hidden Setup.ini Keys:
+			</font><br/>
+			<br/><br/>
+
+			<table><tr><td style="padding:25px" bgcolor="#e8e8e8">
+			<font size="3" face="Arial" color="#000000">
+			<b>Optional keys:</b>
+
+			<pre>
+AutoAccountName=BillyGoat
+BuildVersion=29
+Skipintro=on
+Skipsoftpad=on
+TextTheme=1
+			</pre>
+			</td></tr></table>
+
+			<br/></font><font size="2" face="Arial" color="#000000">
+			<i>Advanced users can use the hidden keys to load values that cannot be modified by the econfig.exe Tool</i><br/><br/>
+			- AutoAccountName: automatically sets the login account name to the given value.<br/>
+			- TextTheme: value 1 inverts text colors that may help improve readability on modified dark backgrounds.<br/>
+			- BuildVersion: should be used by server owners only.<br/>
+			</font><br/><br/>
+
+		</td>
+	</tr>
+
+
+	<tr><td></td></tr>
+
+	<tr>
+		<td align="center" bgcolor="#eeeeee" height="200">
+			<div id="BuildVersion"></div>
+			<font size="7" face="Arial" color="#000000">
+			How to use BuildVersion?
+			</font><br/>
+
+			<table><tr><td style="padding:25px">
+			<font size="3" face="Arial" color="#000000">
+			Because the decentered state and the way things are there is <i>no</i> default to make this work.<br/>
+			Server admins with no way to HEX the build version number are free to add BuildVersion to their setup.ini:<br/><br/>
+
+			1. make sure your setup.ini contains all <i>48 needed</i> key values.<br>
+			You can use Econfig.exe to update to the latest config file or obtain a new setup.ini file <a href="setup.ini">here</a>.<br/><br/>
+			2. add BuildVersion key value inside setup.ini using notepad.<br/>
+			( for example BuildVersion=12 or BuildVersion=49 ) <i>look below</i><br/><br/>
+			</td></tr></table>
+
+			<img src="buildversion.jpg"><br/><br/>
+			</font>
+
+		</td>
+	</tr>
+
+	<tr>
+		<td height="20" align="center">
+			<font size="3" face="Arial" color="#999999">
+				click to: <a href="javascript:history.back()" class="link">go back</a>
+			</font>
+		</td>
+	</tr>
+	</table>
+
+	<br/><br/>
+	<br/><br/>
+	</td>
+</tr>
+
+<tr>
+	<td bgcolor="#f0d8a4" height="100" align="center">
+
+			<table width="840">
+			<tr>
+				<td width="380" align="left">
+				<img src="http://www.endless-online.com/images/pleasevote.jpg" width="160" height="49">
+				<a href="http://www.mmorpg100.com/in.php?id=67" target="_blank"><img src="http://www.endless-online.com/images/vote2.gif" width="83" height="49" border="0" alt="free mmorpg games" /></a>
+				<a href="http://www.mpog100.com" target="_blank"><img src="http://www.endless-online.com/images/vote1.gif" width="83" height="49" border="0" alt="free online rpg games" /></a>
+				</td>
+				<td width="40" align="center">
+				<img src="http://www.endless-online.com/vult.jpg" height="30" width="30">
+				</td>
+				<td width="420" align="right">
+				<font size="3" face="Arial" color="#000000">
+				<a href="http://www.endless-online.com" class="link">Endless Online</a> | 
+				<a href="http://www.endless-online.com/contact.html" class="link">Contact</a> | 
+				<a href="http://www.endless-online.com/privacypolicy.html" class="link">Privacy Policy</a> | 
+				<a href="http://www.endless-online.com/disclaimer.html" class="link">Disclaimer</a>
+				</td>
+			</tr>
+			</table>
+		</font>
+	</td>
+</tr>
+</table>
+
+</body>
+</html>
