@@ -122,7 +122,7 @@ Sever Packet(
 			New Packet | Login Config Packet</font>
 			</td><td align="right">
 			<font size="4" face="Arial" color="#AAAAAA">
-			last change: 7 nov 2022</font>
+			last change: 22 dec 2022</font>
 			</td></tr></table>
 
 			<table width="900"><tr><td style="padding:25px" bgcolor="#e8e8e8">
@@ -134,6 +134,8 @@ Sever Packet(
                action=220:Config,           // length: 1byte
                maxSkins                     // length: 2bytes , max ammount of unlocked skins.
                maxHairModals                // length: 2bytes , max ammount of choicable hair modals.
+               maxHairModals                // length: 2bytes , max ammount of choicable hair modals.	
+               maxCharName                  // length: 1bytes , max new character name ( values: 12-14 )
 	)
 			</pre>
 			</td></tr>
@@ -488,6 +490,7 @@ Sever Packet(
 			<pre>
 AutoAccountName=BillyGoat
 BuildVersion=29
+ShowGridCursor=on
 Skipintro=on
 Skipsoftpad=on
 TextTheme=1
@@ -497,6 +500,7 @@ TextTheme=1
 			<br/></font><font size="2" face="Arial" color="#000000">
 			<i>Advanced users can use the hidden keys to load values that cannot be modified by the econfig.exe Tool</i><br/><br/>
 			- AutoAccountName: automatically sets the login account name to the given value.<br/>
+			- ShowGridCursor: enable of disable the tile shaped mouseover cursor.<br/>
 			- TextTheme: value 1 inverts text colors that may help improve readability on modified dark backgrounds.<br/>
 			- BuildVersion: should be used by server owners only.<br/>
 			</font><br/><br/>
