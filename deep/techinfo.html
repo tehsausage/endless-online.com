@@ -90,7 +90,7 @@
 			New Packet | Account Config Packet</font>
 			</td><td align="right">
 			<font size="4" face="Arial" color="#AAAAAA">
-			last change: 7 nov 2022</font>
+			last change: 22 dec 2022</font>
 			</td></tr></table>
 
 			<table width="900"><tr><td style="padding:25px" bgcolor="#e8e8e8">
@@ -100,14 +100,17 @@
 Sever Packet(
                id=002:Account,               // length: 1byte
                action=220:Config,            // length: 1byte
-               timer                         // length: 2bytes , values accepted: ( 10 - 600 seconds )
+               accountdelaytime              // length: 2bytes , values accepted: ( 10 - 600 seconds )
+               accountvalidation             // length: 1byte , values accepted: ( 0-off , 1-on )
             )
 			</pre>
 			</td></tr>
 			<tr><td style="padding:25px" bgcolor="#e8e8e8">
 
 			<font size="2" face="Arial" color="#000000"><b>notes:</b>
-			<i>Optional server config(220) reply packet, should be send back instantly after receiving the Account(2) Request packet. This is the moment after the server accepted the first packet send out by the client to check if the account name is free and acceptable. As a result the account creation timer will be initialized with a faster or slower delay (in secs)</i>
+			<i>Optional server config(220) reply packet, should be send back instantly after receiving the Account(2) Request packet. This is the moment after the server accepted the first packet send out by the client to check if the account name is free and acceptable. <br/>
+			<br/> - accountdelaytime initialized the account creation with a faster or slower delay (in secs)
+			<br/> - accountvalidation (1-on) will force the client to (emailed) pincode validation</i>
 			</font>
 			</td></tr></table>
 		</td>
@@ -143,6 +146,325 @@ Sever Packet(
 
 			<font size="2" face="Arial" color="#000000"><b>notes:</b>
 			<i>server could send this config(220) packet instantly after receiving and accepting the first Login request packet send by the client (the packet containing username and password). The new setting packet will initalize the selectable options in the [Character Creation] dialog accordingly. Please be aware that more future settings could be added to this packet in the future.</i>
+			</font>
+			</td></tr></table>
+		</td>
+	</tr>
+
+	<tr><td></td></tr>
+
+	<tr>
+		<td align="center" bgcolor="#eeeeee" height="200">
+			<table width="840"><tr><td>
+			<font size="4" face="Arial" color="#009900">
+			New Packet | New Account Validation</font>
+			</td><td align="right">
+			<font size="4" face="Arial" color="#AAAAAA">
+			last change: 22 dec 2022</font>
+			</td></tr></table>
+
+			<table width="900"><tr><td style="padding:25px" bgcolor="#e8e8e8">
+			<font size="3" face="Arial" color="#000000">
+			<b>C->S : Start Account Validation (step1)</b>
+			<pre>
+Sever Packet(
+               id=002:Account,              // length: 1byte 
+               action=002:Confirm,          // length: 1byte
+               sequenceNumber,              // length: 2bytes - the latest sequence number
+               seperator=255,               // length: 1byte 
+               accountname                  // length: variable string
+               seperator=255,               // length: 1byte 
+               emailaddress                 // length: variable string
+
+
+	)
+			</pre>
+			</td></tr>
+			<tr><td style="padding:25px" bgcolor="#e8e8e8">
+
+			<font size="2" face="Arial" color="#000000"><b>notes:</b>
+			<i>This packet is send to the server after the account creation delay timer has ran out AND when the client was initialized with accountvalidation flag set to 1-on. *this can be done by sending the previous Account(2) Config(220) (S->C) packet to the client.</i>
+			</font>
+			</td></tr></table>
+		</td>
+	</tr>
+
+	<tr><td></td></tr>
+
+
+	<tr>
+		<td align="center" bgcolor="#eeeeee" height="200">
+			<table width="840"><tr><td>
+			<font size="4" face="Arial" color="#990000">
+			New Packet | Login Password Recovery</font>
+			</td><td align="right">
+			<font size="4" face="Arial" color="#AAAAAA">
+			last change: 22 dec 2022</font>
+			</td></tr></table>
+
+			<table width="900"><tr><td style="padding:25px" bgcolor="#e8e8e8">
+			<font size="3" face="Arial" color="#000000">
+			<b>C->S : Login Password Recovery / Request Forgot Password:</b>
+			<pre>
+Sever Packet(
+               id=004:Login,                // length: 1byte 
+               action=009:Get,              // length: 1byte
+
+	)
+			</pre>
+			</td></tr>
+			<tr><td style="padding:25px" bgcolor="#e8e8e8">
+
+			<font size="2" face="Arial" color="#000000"><b>notes:</b>
+			<i>This packet is send to the server when the user clicks on the 'forgot password?' button on the main login dialog.</i>
+			</font>
+			</td></tr></table>
+		</td>
+	</tr>
+
+	<tr><td></td></tr>
+
+	<tr>
+		<td align="center" bgcolor="#eeeeee" height="200">
+			<table width="840"><tr><td>
+			<font size="4" face="Arial" color="#990000">
+			New Packet | Login Password Recovery</font>
+			</td><td align="right">
+			<font size="4" face="Arial" color="#AAAAAA">
+			last change: 22 dec 2022</font>
+			</td></tr></table>
+
+			<table width="900"><tr><td style="padding:25px" bgcolor="#e8e8e8">
+			<font size="3" face="Arial" color="#000000">
+			<b>S->C : Login Password Recovery / Open Screen:</b>
+			<pre>
+Sever Packet(
+               id=004:Login,                // length: 1byte 
+               action=009:Get,              // length: 1byte
+               resultCode                   // length: 2bytes , value:1 (Ok)
+
+	)
+			</pre>
+			</td></tr>
+			<tr><td style="padding:25px" bgcolor="#e8e8e8">
+
+			<font size="2" face="Arial" color="#000000"><b>notes:</b>
+			<i>This packet is the server response to open and start the password recover procedure on the client side. After the client sended LOGIN|GET (C->S) , this lookup is done to keep the client backwards-compatabily</i>
+			</font>
+			</td></tr></table>
+		</td>
+	</tr>
+
+	<tr><td></td></tr>
+
+	<tr>
+		<td align="center" bgcolor="#eeeeee" height="200">
+			<table width="840"><tr><td>
+			<font size="4" face="Arial" color="#990000">
+			New Packet | Login Password Recovery</font>
+			</td><td align="right">
+			<font size="4" face="Arial" color="#AAAAAA">
+			last change: 22 dec 2022</font>
+			</td></tr></table>
+
+			<table width="900"><tr><td style="padding:25px" bgcolor="#e8e8e8">
+			<font size="3" face="Arial" color="#000000">
+			<b>C->S  Login Password Recovery / Select Accountname (step1)</b>
+			<pre>
+Sever Packet(
+               id=004:Login,                // length: 1byte 
+               action=010:New,              // length: 1byte
+               accountname                  // length: variable string
+
+	)
+			</pre>
+			</td></tr>
+			<tr><td style="padding:25px" bgcolor="#e8e8e8">
+
+			<font size="2" face="Arial" color="#000000"><b>notes:</b>
+			<i>This packet is send to the server when the user enters and sends the accountname he/she wants to recover. The server should generate, memorize and send out an email with a 7-digit PIN-code.</i>
+			</font>
+			</td></tr></table>
+		</td>
+	</tr>
+
+	<tr><td></td></tr>
+
+	<tr>
+		<td align="center" bgcolor="#eeeeee" height="200">
+			<table width="840"><tr><td>
+			<font size="4" face="Arial" color="#990000">
+			New Packet | Login Password Recovery</font>
+			</td><td align="right">
+			<font size="4" face="Arial" color="#AAAAAA">
+			last change: 22 dec 2022</font>
+			</td></tr></table>
+
+			<table width="900"><tr><td style="padding:25px" bgcolor="#e8e8e8">
+			<font size="3" face="Arial" color="#000000">
+			<b>S->C : Login Password Recovery / Select Accountname reply:</b>
+			<pre>
+Sever Packet(
+               id=004:Login,                // length: 1byte 
+               action=010:New,              // length: 1byte
+               resultCode                   // length: 2bytes
+               seperator=255,               // length: 1byte 
+               emailaddress                 // length: variable (masked email)
+
+	)
+			</pre>
+			</td></tr>
+			<tr><td style="padding:25px" bgcolor="#e8e8e8">
+
+			<font size="2" face="Arial" color="#000000"><b>notes:</b>
+			<i>This packet is the server response after the client sended the requested accountname to recover password.</i><br/>
+			<br/>- resultcode 0 : Sorry account does not exist in the database.
+			<br/>- resultcode 1 : Recover request accepted - client goes to step 2 (pincode)
+			<br/>- resultcode 2 : Recover request accepted showing emailaddress string - client goes to step 2 (pincode)
+			<br/>- resultcode 3 : Too many account lookups from this account - aborts
+			<br/>- resultcode 4 : Sorry the recover system is currently disabled - aborts
+			<br/>- resultcode 5 : Sorry the recover system is too busy - aborts
+			</font>
+			</td></tr></table>
+		</td>
+	</tr>
+
+	<tr><td></td></tr>
+
+	<tr>
+		<td align="center" bgcolor="#eeeeee" height="200">
+			<table width="840"><tr><td>
+			<font size="4" face="Arial" color="#990000">
+			New Packet | Login Password Recovery</font>
+			</td><td align="right">
+			<font size="4" face="Arial" color="#AAAAAA">
+			last change: 22 dec 2022</font>
+			</td></tr></table>
+
+			<table width="900"><tr><td style="padding:25px" bgcolor="#e8e8e8">
+			<font size="3" face="Arial" color="#000000">
+			<b>C->S  Login Password Recovery / Send pincode (step2)</b>
+			<pre>
+Sever Packet(
+               id=004:Login,                // length: 1byte 
+               action=002:Confirm,          // length: 1byte
+               pincode                      // length: variable string
+
+	)
+			</pre>
+			</td></tr>
+			<tr><td style="padding:25px" bgcolor="#e8e8e8">
+
+			<font size="2" face="Arial" color="#000000"><b>notes:</b>
+			<i>This packet is send to the server when the user enters and sends the secret 7-digit PIN-code to verify his/her email. important: The client will not accept any other input then a string of 7 chars long!</i>
+			</font>
+			</td></tr></table>
+		</td>
+	</tr>
+
+	<tr><td></td></tr>
+
+	<tr>
+		<td align="center" bgcolor="#eeeeee" height="200">
+			<table width="840"><tr><td>
+			<font size="4" face="Arial" color="#990000">
+			New Packet | Login Password Recovery</font>
+			</td><td align="right">
+			<font size="4" face="Arial" color="#AAAAAA">
+			last change: 22 dec 2022</font>
+			</td></tr></table>
+
+			<table width="900"><tr><td style="padding:25px" bgcolor="#e8e8e8">
+			<font size="3" face="Arial" color="#000000">
+			<b>S->C : Login Password Recovery / Select Accountname reply:</b>
+			<pre>
+Sever Packet(
+               id=004:Login,                // length: 1byte 
+               action=002:Confirm,          // length: 1byte
+               resultCode                   // length: 2bytes
+
+	)
+			</pre>
+			</td></tr>
+			<tr><td style="padding:25px" bgcolor="#e8e8e8">
+
+			<font size="2" face="Arial" color="#000000"><b>notes:</b>
+			<i>This packet is the server response after the client sended the 7-digit PIN-code for validation.</i><br/>
+			<br/>- resultcode 0 : Wrong code - aborts
+			<br/>- resultcode 1 : Pin-code accepted, continue to step 3 (new password)
+			</font>
+			</td></tr></table>
+		</td>
+	</tr>
+
+	<tr><td></td></tr>
+
+	<tr>
+		<td align="center" bgcolor="#eeeeee" height="200">
+			<table width="840"><tr><td>
+			<font size="4" face="Arial" color="#990000">
+			New Packet | Login Password Recovery</font>
+			</td><td align="right">
+			<font size="4" face="Arial" color="#AAAAAA">
+			last change: 22 dec 2022</font>
+			</td></tr></table>
+
+			<table width="900"><tr><td style="padding:25px" bgcolor="#e8e8e8">
+			<font size="3" face="Arial" color="#000000">
+			<b>C->S  Login Password Recovery / Send New Password (step3)</b>
+			<pre>
+Sever Packet(
+               id=004:Login,                // length: 1byte 
+               action=005:Update,           // length: 1byte
+               account                      // length: variable string
+               seperator=255,               // length: 1byte 
+               pincode                      // length: variable string
+               seperator=255,               // length: 1byte 
+               newpassword                  // length: variable string
+               seperator=255,               // length: 1byte 
+
+	)
+			</pre>
+			</td></tr>
+			<tr><td style="padding:25px" bgcolor="#e8e8e8">
+
+			<font size="2" face="Arial" color="#000000"><b>notes:</b>
+			<i>This packet is send to the server when the user double checked on a new password and clicked on the SEND button to complete the recovery. For security purposes the client will send everything (account, pincode and the new password) to the server.</i>
+			</font>
+			</td></tr></table>
+		</td>
+	</tr>
+
+	<tr><td></td></tr>
+
+	<tr>
+		<td align="center" bgcolor="#eeeeee" height="200">
+			<table width="840"><tr><td>
+			<font size="4" face="Arial" color="#990000">
+			New Packet | Login Password Recovery (FINAL PACKET)</font>
+			</td><td align="right">
+			<font size="4" face="Arial" color="#AAAAAA">
+			last change: 22 dec 2022</font>
+			</td></tr></table>
+
+			<table width="900"><tr><td style="padding:25px" bgcolor="#e8e8e8">
+			<font size="3" face="Arial" color="#000000">
+			<b>S->C : Login Password Recovery / New password reply:</b>
+			<pre>
+Sever Packet(
+               id=004:Login,                // length: 1byte 
+               action=005:Update,           // length: 1byte
+               resultCode                   // length: 2bytes
+
+	)
+			</pre>
+			</td></tr>
+			<tr><td style="padding:25px" bgcolor="#e8e8e8">
+
+			<font size="2" face="Arial" color="#000000"><b>notes:</b>
+			<i>This packet is the server response after the client sended the accountname, PIN-code and new password. The usual reply would be 1(OK) and the client goes back to the main menu telling the user that the password was successfully recovered and reset.</i><br/>
+			<br/>- resultcode 0 : Unexpected error - aborts
+			<br/>- resultcode 1 : The pasword was updated in database - recovery completed
 			</font>
 			</td></tr></table>
 		</td>
