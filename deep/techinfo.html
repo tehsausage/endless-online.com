@@ -108,9 +108,9 @@ Sever Packet(
 			<tr><td style="padding:25px" bgcolor="#e8e8e8">
 
 			<font size="2" face="Arial" color="#000000"><b>notes:</b>
-			<i>Optional server config(220) reply packet, should be send back instantly after receiving the Account(2) Request packet. This is the moment after the server accepted the first packet send out by the client to check if the account name is free and acceptable. <br/>
+			<i>Optional server config(220) reply packet, should be send back instantly after receiving the Account(2) Request packet. This is the moment after the server accepted the first packet send out by the client to check if the account name is free and acceptable.</i> <br/>
 			<br/> - accountdelaytime initialized the account creation with a faster or slower delay (in secs)
-			<br/> - accountvalidation (1-on) will force the client to (emailed) pincode validation</i>
+			<br/> - accountvalidation (1-on) will force the client to (emailed) pincode validation
 			</font>
 			</td></tr></table>
 		</td>
@@ -157,7 +157,7 @@ Sever Packet(
 		<td align="center" bgcolor="#eeeeee" height="200">
 			<table width="840"><tr><td>
 			<font size="4" face="Arial" color="#009900">
-			New Packet | New Account Validation</font>
+			New Packet | New Account Validation (START)</font>
 			</td><td align="right">
 			<font size="4" face="Arial" color="#AAAAAA">
 			last change: 22 dec 2022</font>
@@ -191,12 +191,129 @@ Sever Packet(
 
 	<tr><td></td></tr>
 
+	<tr>
+		<td align="center" bgcolor="#eeeeee" height="200">
+			<table width="840"><tr><td>
+			<font size="4" face="Arial" color="#009900">
+			New Packet | New Account Validation</font>
+			</td><td align="right">
+			<font size="4" face="Arial" color="#AAAAAA">
+			last change: 22 dec 2022</font>
+			</td></tr></table>
+
+			<table width="900"><tr><td style="padding:25px" bgcolor="#e8e8e8">
+			<font size="3" face="Arial" color="#000000">
+			<b>S->C : Account Validation / reply</b>
+			<pre>
+Sever Packet(
+               id=002:Account,              // length: 1byte 
+               action=002:Confirm,          // length: 1byte
+               resultCode                   // length: 2bytes , value:1 (Ok)
+
+	)
+			</pre>
+			</td></tr>
+			<tr><td style="padding:25px" bgcolor="#e8e8e8">
+
+			<font size="2" face="Arial" color="#000000"><b>notes:</b>
+			<i>This packet is the server response to the account validation started after the client timedout on the original accountcreationdelay (kept for backwards compatibility)</i><br/>
+			<br/>-resultcode 0 : the system is too busy (email queue full) - client aborts.
+			<br/>-resultcode 1 : validation send by email and accepted - client goes to step 2 (new screen)
+			</font>
+			</td></tr></table>
+		</td>
+	</tr>
+
+	<tr><td></td></tr>
+
+	<tr>
+		<td align="center" bgcolor="#eeeeee" height="200">
+			<table width="840"><tr><td>
+			<font size="4" face="Arial" color="#009900">
+			New Packet | Extended Account Validation</font>
+			</td><td align="right">
+			<font size="4" face="Arial" color="#AAAAAA">
+			last change: 22 dec 2022</font>
+			</td></tr></table>
+
+			<table width="900"><tr><td style="padding:25px" bgcolor="#e8e8e8">
+			<font size="3" face="Arial" color="#000000">
+			<b>C->S : Account Validation Send ALL</b>
+			<pre>
+Sever Packet(
+               id=002:Account,              // length: 1byte 
+               action=006:New,              // length: 1byte
+               sequenceNumber,              // length: 2bytes - the latest sequence number
+               seperator=255,               // length: 1byte 
+               accountname                  // length: variable string
+               seperator=255,               // length: 1byte 
+               password                     // length: variable string
+               seperator=255,               // length: 1byte 
+               realname                     // length: variable string
+               seperator=255,               // length: 1byte 
+               location                     // length: variable string
+               seperator=255,               // length: 1byte 
+               email                        // length: variable string
+               seperator=255,               // length: 1byte 
+               serial_computername          // length: variable string
+               seperator=255,               // length: 1byte 
+               serial_hardware              // length: variable string
+               seperator=255,               // length: 1byte 
+               PINCODE                      // length: *added* extra variable string
+	)
+			</pre>
+			</td></tr>
+			<tr><td style="padding:25px" bgcolor="#e8e8e8">
+
+			<font size="2" face="Arial" color="#000000"><b>notes:</b>
+			<i>This packet is send to the server after entering PIN-code and hitting Create button. Notice that the packet is exactly the same as the NEW ACCOUNT packet, only with an additional PINCODE at the end. Since the server should be in an [validation only] mode the server knows to look for the pincode and validate it.</i>
+			</font>
+			</td></tr></table>
+		</td>
+	</tr>
+
+	<tr><td></td></tr>
+
+	<tr>
+		<td align="center" bgcolor="#eeeeee" height="200">
+			<table width="840"><tr><td>
+			<font size="4" face="Arial" color="#009900">
+			New Packet | Extended Account Validation (COMPLETED)</font>
+			</td><td align="right">
+			<font size="4" face="Arial" color="#AAAAAA">
+			last change: 22 dec 2022</font>
+			</td></tr></table>
+
+			<table width="900"><tr><td style="padding:25px" bgcolor="#e8e8e8">
+			<font size="3" face="Arial" color="#000000">
+			<b>S->C : Account Validation Result</b>
+			<pre>
+Sever Packet(
+               id=002:Account,              // length: 1byte 
+               action=003:Result,           // length: 1byte
+               resultCode                   // length: 2bytes , value:1 (Ok)
+
+	)
+			</pre>
+			</td></tr>
+			<tr><td style="padding:25px" bgcolor="#e8e8e8">
+
+			<font size="2" face="Arial" color="#000000"><b>notes:</b>
+			<i>This packet is the server response to the completed and validated account creation attempt by the client. The server should check the PINCODE and block/continue the creation of the new account since all information is send over. Its recommended to close the client connection after x failed attempts.</i><br/>
+			<br/>-resultcode 3 : account accepted (pincode ok) same result packet as unverified account creation!
+			<br/>-resultcode 8 : wrong pincode, client stays on pincode verification screen (and can try again)
+			</font>
+			</td></tr></table>
+		</td>
+	</tr>
+
+	<tr><td></td></tr>
 
 	<tr>
 		<td align="center" bgcolor="#eeeeee" height="200">
 			<table width="840"><tr><td>
 			<font size="4" face="Arial" color="#990000">
-			New Packet | Login Password Recovery</font>
+			New Packet | Login Password Recovery (START)</font>
 			</td><td align="right">
 			<font size="4" face="Arial" color="#AAAAAA">
 			last change: 22 dec 2022</font>
@@ -323,7 +440,7 @@ Sever Packet(
 			<br/>- resultcode 2 : Recover request accepted showing emailaddress string - client goes to step 2 (pincode)
 			<br/>- resultcode 3 : Too many account lookups from this account - aborts
 			<br/>- resultcode 4 : Sorry the recover system is currently disabled - aborts
-			<br/>- resultcode 5 : Sorry the recover system is too busy - aborts
+			<br/>- resultcode 5 : Sorry the recover system is too busy (email queue full) - aborts
 			</font>
 			</td></tr></table>
 		</td>
@@ -441,7 +558,7 @@ Sever Packet(
 		<td align="center" bgcolor="#eeeeee" height="200">
 			<table width="840"><tr><td>
 			<font size="4" face="Arial" color="#990000">
-			New Packet | Login Password Recovery (FINAL PACKET)</font>
+			New Packet | Login Password Recovery (COMPLETED)</font>
 			</td><td align="right">
 			<font size="4" face="Arial" color="#AAAAAA">
 			last change: 22 dec 2022</font>
