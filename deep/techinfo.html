@@ -219,6 +219,7 @@ Sever Packet(
 			<i>This packet is the server response to the account validation started after the client timedout on the original accountcreationdelay (kept for backwards compatibility)</i><br/>
 			<br/>-resultcode 0 : the system is too busy (email queue full) - client aborts.
 			<br/>-resultcode 1 : validation send by email and accepted - client goes to step 2 (new screen)
+			<br/>-resultcode 2 : too many attempt send to this email - client aborts.
 			</font>
 			</td></tr></table>
 		</td>
@@ -441,6 +442,7 @@ Sever Packet(
 			<br/>- resultcode 3 : Too many account lookups from this account - aborts
 			<br/>- resultcode 4 : Sorry the recover system is currently disabled - aborts
 			<br/>- resultcode 5 : Sorry the recover system is too busy (email queue full) - aborts
+			<br/>- resultcode 6 : Too many requests have been sent to this email, Please try again tomorrow - aborts
 			</font>
 			</td></tr></table>
 		</td>
