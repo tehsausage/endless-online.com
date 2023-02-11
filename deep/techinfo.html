@@ -212,6 +212,201 @@ Sever Packet(
 		</td>
 	</tr>
 
+
+
+
+	<tr><td></td></tr>
+
+	<tr>
+		<td align="center" bgcolor="#eeeeee" height="200">
+			<table width="840"><tr><td>
+			<font size="4" face="Arial" color="#9900AA">
+			New Packet | Show captcha on client</font>
+			</td><td align="right">
+			<font size="4" face="Arial" color="#AAAAAA">
+			last change: 10 feb 2023</font>
+			</td></tr></table>
+
+			<table width="900"><tr><td style="padding:25px" bgcolor="#e8e8e8">
+			<font size="3" face="Arial" color="#000000">
+			<b>S->C : Show captcha on client:</b>
+			<pre>
+Sever Packet(
+               id=249:Captcha,                // length: 1byte 
+               action=013:Open,               // length: 1byte
+               captchaID                      // length: 2bytes , send back in c->s RESULT CAPTCHA packet
+               rewardEXP                      // length: 3bytes , displays the rewarded experience on popup
+               chaptchaString                 // length: 5bytes , method 1: generated string (accepted chars A-Z)
+	)
+
+
+Sever Packet(
+               id=249:Captcha,                // length: 1byte 
+               action=013:Open,               // length: 1byte
+               captchaID                      // length: 2bytes , send back in c->s RESULT CAPTCHA packet
+               rewardEXP                      // length: 3bytes , displays the rewarded experience on popup
+                                              // length: 0bytes , method 2: client-checked captcha
+	)
+			</pre>
+			</td></tr>
+			<tr><td style="padding:25px" bgcolor="#e8e8e8">
+
+			<font size="2" face="Arial" color="#000000"><b>notes:</b>
+			<i>This packet shows the captcha popup on screen, there are currently 2 ways to do this:<br/><br/>
+			<b>1. Server-checked</b> : Make sure to include a 5 character captcha string in this s->c packet to enable server-checked mode on the client. The client will display your captcha on the screen and will send the input captcha back to your server for checking. The server chould respond with an UPDATE CAPTCHA packet to display a new challenge, in case the user sended (too many) wrong answers or <b>accept</b> the captcha and send CLOSE CAPTCHA packet to unlock the client.<br/><br>
+			<b>2. Client-checked</b> : Send only a captcha ID and reward ammount to the client but do <b>not</b> include the captcha string in this packet. The client will generate local captcha's and handle everything itself. A result/captcha packet is send to the server and the popup is closed locally on success.<br/><br/>
+			The client will always sends RESULT CAPTCHA packet in both case.<br/> 
+			The server should reply with CLOSE CAPTCHA for both methodes as well. To correctly sync the experience reward for the user.<br/><br/>
+
+			Recommendations: <b>flag</b> the player with an <b>inCaptcha flag</b> to avoid exploits with the reward. Punish and/or additionally flag users that in the earn EXP while this flag is set, because they are not able to earn exp during a captcha block. Punish or additionally flag users that disconnect while the captcha flag is set. Remove and reward inCaptcha flagged users when receiving a correct or any* RESULT CAPTCHA packet. Depending on the used method (remote or local).</i>
+			</font>
+			</td></tr></table>
+		</td>
+	</tr>
+
+
+
+
+
+	<tr><td></td></tr>
+
+	<tr>
+		<td align="center" bgcolor="#eeeeee" height="200">
+			<table width="840"><tr><td>
+			<font size="4" face="Arial" color="#9900AA">
+			New Packet | Update captcha popup on client</font>
+			</td><td align="right">
+			<font size="4" face="Arial" color="#AAAAAA">
+			last change: 10 feb 2023</font>
+			</td></tr></table>
+
+			<table width="900"><tr><td style="padding:25px" bgcolor="#e8e8e8">
+			<font size="3" face="Arial" color="#000000">
+			<b>S->C : Update captcha popup on client:</b>
+			<pre>
+Sever Packet(
+               id=249:Captcha,                // length: 1byte 
+               action=005:Update,             // length: 1byte
+               captchaID                      // length: 2bytes , send back in c->s RESULT CAPTCHA packet
+               chaptchaString                 // length: 5bytes , generated string (accepted chars A-Z)
+	)
+			</pre>
+			</td></tr>
+			<tr><td style="padding:25px" bgcolor="#e8e8e8">
+
+			<font size="2" face="Arial" color="#000000"><b>notes:</b>
+			<i>This packet displays a new/updated captcha on the blocking client popup, could be used on too many failures.</i>
+			</font>
+			</td></tr></table>
+		</td>
+	</tr>
+
+
+
+	<tr><td></td></tr>
+
+	<tr>
+		<td align="center" bgcolor="#eeeeee" height="200">
+			<table width="840"><tr><td>
+			<font size="4" face="Arial" color="#9900AA">
+			New Packet | Close captcha (success)</font>
+			</td><td align="right">
+			<font size="4" face="Arial" color="#AAAAAA">
+			last change: 10 feb 2023</font>
+			</td></tr></table>
+
+			<table width="900"><tr><td style="padding:25px" bgcolor="#e8e8e8">
+			<font size="3" face="Arial" color="#000000">
+			<b>S->C : Close captcha (success)</b>
+			<pre>
+Sever Packet(
+               id=249:Captcha,                // length: 1byte 
+               action=005:Close               // length: 1byte
+               totalexperience                // length: 4bytes , total experience (exp sync)
+	)
+			</pre>
+			</td></tr>
+			<tr><td style="padding:25px" bgcolor="#e8e8e8">
+
+			<font size="2" face="Arial" color="#000000"><b>notes:</b>
+			<i>Will close the popup on client, playing a success sound, and displaying the earned exp.</i>
+			</font>
+			</td></tr></table>
+		</td>
+	</tr>
+
+
+
+	<tr><td></td></tr>
+
+	<tr>
+		<td align="center" bgcolor="#eeeeee" height="200">
+			<table width="840"><tr><td>
+			<font size="4" face="Arial" color="#9900AA">
+			New Packet | Send captcha answer (success)</font>
+			</td><td align="right">
+			<font size="4" face="Arial" color="#AAAAAA">
+			last change: 10 feb 2023</font>
+			</td></tr></table>
+
+			<table width="900"><tr><td style="padding:25px" bgcolor="#e8e8e8">
+			<font size="3" face="Arial" color="#000000">
+			<b>C->S : Send captcha answer (success)</b>
+			<pre>
+Sever Packet(
+               id=249:Captcha,                // length: 1byte 
+               action=003:Result              // length: 1byte
+               captchaID                      // length: 2bytes , echoing captcha id for server-side checking
+               captchaString                  // length: 5bytes , captcha string for server-side checking
+	)
+			</pre>
+			</td></tr>
+			<tr><td style="padding:25px" bgcolor="#e8e8e8">
+
+			<font size="2" face="Arial" color="#000000"><b>notes:</b>
+			<i>The client will send this packet with the input captcha, to server.<br/>
+			<b>method 1:</b> you could check the captchaString with the one generated and stored on server memory.<br/>
+			<b>method 2:</b> you should always accept this packet as a successful captcha answer when using the client-side checking.</i>
+			</font>
+			</td></tr></table>
+		</td>
+	</tr>
+
+
+
+	<tr><td></td></tr>
+
+	<tr>
+		<td align="center" bgcolor="#eeeeee" height="200">
+			<table width="840"><tr><td>
+			<font size="4" face="Arial" color="#9900AA">
+			New Packet | Client requesting new captcha</font>
+			</td><td align="right">
+			<font size="4" face="Arial" color="#AAAAAA">
+			last change: 10 feb 2023</font>
+			</td></tr></table>
+
+			<table width="900"><tr><td style="padding:25px" bgcolor="#e8e8e8">
+			<font size="3" face="Arial" color="#000000">
+			<b>C->S : Client requesting new captcha</b>
+			<pre>
+Sever Packet(
+               id=249:Captcha,                // length: 1byte 
+               action=001:Request             // length: 1byte
+               captchaID                      // length: 2bytes , echoing captcha id for server-side checking
+	)
+			</pre>
+			</td></tr>
+			<tr><td style="padding:25px" bgcolor="#e8e8e8">
+
+			<font size="2" face="Arial" color="#000000"><b>notes:</b>
+			<i>The client will send this packet upon 5 failures, when using method 1. The server could respond with generating a new captcha and sending it using the OPEN CAPTCHA packet.</i>
+			</font>
+			</td></tr></table>
+		</td>
+	</tr>
+
+
 	<tr><td></td></tr>
 
 	<tr>
