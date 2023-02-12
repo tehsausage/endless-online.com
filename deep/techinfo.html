@@ -257,7 +257,7 @@ Sever Packet(
 			<b>2. Client-checked</b> : Send only a captcha ID and reward ammount to the client but do <b>not</b> include the captcha string in this packet. The client will generate local captcha's and handle everything itself. A result/captcha packet is send to the server and the popup is closed locally on success.<br/><br/>
 			The client will always sends RESULT CAPTCHA packet in both case.<br/> 
 			The server should reply with CLOSE CAPTCHA for both methodes as well. To correctly sync the experience reward for the user.<br/><br/>
-
+			Usage: The OPEN CAPTCHA could be targeted on suspected players by admins, or weekly and randomly send on a timer on a convenient moment, for example when the user is not fightning or an a specific map etc.<br/><br/>
 			Recommendations: <b>flag</b> the player with an <b>inCaptcha flag</b> to avoid exploits with the reward. Punish and/or additionally flag users that in the earn EXP while this flag is set, because they are not able to earn exp during a captcha block. Punish or additionally flag users that disconnect while the captcha flag is set. Remove and reward inCaptcha flagged users when receiving a correct or any* RESULT CAPTCHA packet. Depending on the used method (remote or local).</i>
 			</font>
 			</td></tr></table>
@@ -400,7 +400,7 @@ Sever Packet(
 			<tr><td style="padding:25px" bgcolor="#e8e8e8">
 
 			<font size="2" face="Arial" color="#000000"><b>notes:</b>
-			<i>The client will send this packet upon 5 failures, when using method 1. The server could respond with generating a new captcha and sending it using the OPEN CAPTCHA packet.</i>
+			<i>The client will send this packet upon 5 failures, when using method 1. The server could respond with generating a new captcha and sending it using the UPDATE CAPTCHA packet.</i>
 			</font>
 			</td></tr></table>
 		</td>
