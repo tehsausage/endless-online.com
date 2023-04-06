@@ -20,6 +20,14 @@
 	position: relative;
 }
 
+.smalllink{
+	color : #70531D;
+	font-family: Arial, sans-serif;
+	text-align: left;
+	text-decoration: none;
+	position: relative;
+}
+
 .grlink{
 	color : #CCCCCC;
 	font-family: Arial, sans-serif;
