@@ -1,0 +1,180 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+  <meta name="viewport" content="width=max-device-width, user-scalable=yes">
+  <meta name="keywords" content="online rpg, free rpg, mmorpg, mmrpg, world, roleplay, endless online, anime, manga"/> 
+  <meta name="description" content="Let's play Endless Online using the latest client!"/> 
+  <link rel="shortcut icon" href="../favicon.ico" />
+  <link rel="stylesheet" type="text/css" href="../style.css" />
+  <title>Endless Online + Massive online RPG</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table width="100%">
+<tr>
+	<td bgcolor="#000000" height="100" align="center">
+		<font size="5" face="Arial" color="#FFFFFF">
+		<a href="http://www.endless-online.com/index.html" class="headerlink">HOME</a> | 
+		<a href="http://www.endless-online.com/downloads.html" class="headerlink">DOWNLOADS</a> | 
+		<a href="http://www.endless-online.com/themes.html" class="headerlink">THEMES</a> | 
+		<a href="http://www.endless-online.com/links.html" class="headerlink">LINKS</a> | 
+		<a href="http://www.endless-online.com/archive.html" class="headerlink">ARCHIVE</a> | 
+		<a href="http://game.endless-online.com/server.html" class="headerlink">SERVER STATUS</a> | 
+		<a href="http://game.endless-online.com/playerlist.html" class="headerlink">WHO IS ON</a> | 
+		<a href="http://www.endless-online.com/credential.html" class="headerlink">CREDENTIAL</a>
+		</font>
+	</td>
+</tr>
+
+<tr>
+	<td background="http://www.endless-online.com/header.jpg" height="500" align="center">
+		<a href="http://www.endless-online.com"><img src="http://www.endless-online.com/endless.png"></a>
+	</td>
+</tr>
+
+<tr>
+	<td height="20" align="center">
+	</td>
+</tr>
+
+<tr>
+	<td align="center">
+
+
+		<table width="1200" cellpadding="20">
+		<tr>
+			<td align="center">
+
+			<font size="7" face="Arial" color="#000000">
+			<b>Endless Online</b> : Commandlist
+			</font>
+			<br/>
+			<font size="5" face="Arial" color="#000000">
+			0.4.X command-architecture; required D(debug level) and A(admin level)
+			</font>
+		</td>
+	</tr>
+
+	<tr><td></td></tr>
+
+
+
+	<tr>
+		<td align="center" bgcolor="#e8e7dd">
+
+
+<table cellpadding="20"><tr><td width="1100" bgcolor="#f4f4ef"><PRE>
+Commandlist
+</PRE></td></tr><table><br/>
+
+<table cellpadding="20"><tr><td width="1100" bgcolor="#f4f4ef"><PRE>
+EOS| basic commands:
+
+A2 : $ban , $b character time - ban the player for 20m(empty) or 1h,2h,3h
+A4 : $ban , $b character forever(account) or perm(serverwide)
+A4 : $evacuate , $e - evacuate map
+A2 : $free , $f character - frees player from jail
+A3 : $freeze character - freeze the player from moving
+A1 : $hide , $h - hide yourself on/off
+A3 : $globalmute , $gmute - globalchat on/off
+A1 : $info character - shows basic stats of player
+A1 : $inventory, $i character - shows inventory of player
+A2 : $jail, $j character - jails the player
+A2 : $kick , $k character - kicks off the player
+A1 : $loc, $locate character - display map,channel and coords of player 
+A2 : $mute , $m character - mute the player
+A2 : $play , $p songid - play a song id like 1,2,3,4 etc to all in range
+A3 : $quake, $q strength - quake the map
+D2 : $remap, $r - reload current map
+A2 : $skick , $sk character - silently kick off the player
+A2 : $smute , $sm character - silently mute the player
+A1 : $spy, $s character - casual warp to map of player, in a corner
+D1 : $stats - shows server stats on chat
+A1 : $stealth - do not show yourself on online player list.
+A1 : $unfreeze , $u character - unfreeze the player
+D1 : $wf value - warps fastfoward by x tiles (10default)
+A1 : $warp, $w, $y map x y - warps to a map name-lookup, map id , or map id x,y
+A2 : $warpmeto, $wm2 character - warps you to player
+A3 : $warptome, $w2m character - warps player to you
+
+</PRE></td></tr><table><br/>
+
+<table cellpadding="20"><tr><td width="1100" bgcolor="#f4f4ef"><PRE>
+EOS| character mod commands:
+
+A4 : $demote character - demotes admin player to normal player
+D1 : $levelup times - level up your admin player x times
+D1 : $resetlevel - reset your admin player to level 0
+D1 : $setlevel level - level up your admin player to level
+A1 : $setadmin character adminlvl - make player admin with adminlevel, cannot be higher then your own adminlevel.
+D2 : $setdebug character - give player full debug options (caution on live-servers!)
+D1 : $setclass value - sets the class of target player
+D1 : $sethp , $shp character value - sets current hitpoints to value
+D1 : $setmp , $smp character value - sets current manapoints to value
+D1 : $setsp , $ssp character value - sets current specialpoints to value
+D1 : $sethairstyle character id - sets race of target player to id
+D1 : $sethaircolor character id - sets race of target player to id
+D1 : $setskin , $setrace character id - sets race of target player to id
+D1 : $settitle character title - sets the title of a player
+
+</PRE></td></tr><table><br/>
+
+<table cellpadding="20"><tr><td width="1100" bgcolor="#f4f4ef"><PRE>
+EOS| debug mod commands:
+
+D1 : $ditem , $di itemid value - drops x items in your inventory, can also enter name eg: $di black boots
+D1 : $sitem , $si itemid value - spawns x items in your inventory, can also enter name eg: $si canvas 5
+D1 : $ritem , $si itemid - removes all items of item.id out of your inventory
+D1 : $mapinfo - view internal information map and channel status on chat
+D2 : $scahn , $spawnchan value - spawn x more server-channels of the map
+D2 : $snpc , $spawnnpc id/name value - spawn x of npc on your current x,y location
+D2 : $denpc , $despawnnpc id - despawn npc id (map handle)
+D1 : $learn character spellid - player learns a skills
+D1 : $forget character spellid - player forget a skill
+
+</PRE></td></tr><table><br/>
+		</td>
+	</tr>
+
+
+	</table>
+
+			<br/>
+			<font size="3" face="Arial" color="#000000">
+			<a href="https://www.endless-online.com/archives.html" class="link">click here</a> to return to the archive.</b>
+			</font><br/><br/>
+
+
+	<br/><br/>
+	</td>
+</tr>
+
+<tr>
+	<td bgcolor="#f0d8a4" height="100" align="center">
+
+			<table width="900">
+			<tr>
+				<td width="380" align="left">
+				<img src="http://www.endless-online.com/images/pleasevote.jpg" width="160" height="49">
+				<a href="http://www.mmorpg100.com/in.php?id=67" target="_blank"><img src="http://www.endless-online.com/images/vote2.gif" width="83" height="49" border="0" alt="free mmorpg games" /></a>
+				<a href="http://www.mpog100.com" target="_blank"><img src="http://www.endless-online.com/images/vote1.gif" width="83" height="49" border="0" alt="free online rpg games" /></a>
+				</td>
+				<td width="40" align="center">
+				<img src="http://www.endless-online.com/vult.jpg" height="30" width="30">
+				</td>
+				<td width="480" align="right">
+				<font size="3" face="Arial" color="#000000">
+				<a href="http://www.endless-online.com" class="link">Endless Online</a> | 
+				<a href="http://www.endless-online.com/contact.html" class="link">Contact</a> | 
+				<a href="http://www.endless-online.com/privacypolicy.html" class="link">Privacy Policy</a> | 
+				<a href="http://www.endless-online.com/disclaimer.html" class="link">Disclaimer (ToS)</a>
+				</td>
+			</tr>
+			</table>
+		</font>
+	</td>
+</tr>
+</table>
+
+</body>
+</html>
