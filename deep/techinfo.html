@@ -216,6 +216,46 @@ Sever Packet(
 
 
 
+
+
+	<tr><td></td></tr>
+
+	<tr>
+		<td align="center" bgcolor="#eeeeee" height="200">
+			<table width="840"><tr><td>
+			<font size="4" face="Arial" color="#770000">
+			New Packet | Item/Npc Lookup Notification</font>
+			</td><td align="right">
+			<font size="4" face="Arial" color="#AAAAAA">
+			last change: 29 May 2023</font>
+			</td></tr></table>
+
+			<table width="900"><tr><td style="padding:25px" bgcolor="#e8e8e8">
+			<font size="3" face="Arial" color="#000000">
+			<b>C->S : client typed #item or #npc</b>
+			<pre>
+Sever Packet(
+               id=048:Communications,         // length: 1byte 
+               action=009:Get,                // length: 1byte
+               lookupType                     // length: 1bytes , 1=#item-lookup, 2=#npc-lookup
+               ident                          // length: 2bytes , the item.id or npc.id that was searched or requested.
+	)
+
+			</pre>
+			</td></tr>
+			<tr><td style="padding:25px" bgcolor="#e8e8e8">
+
+			<font size="2" face="Arial" color="#000000"><b>notes:</b>
+			<i>This packet is send out to the server <b>instead</b> of a chatline ( the chatline is no longer send for commands starting with #item or #npc version 03J+ ) Instead the client will send the direct pub ID of the item (lookupType 1) or the npc (lookupType 2)<br/><br/>
+			The server could respond with normal AddText packets to display more additional custom server-information on the bottom of the lookup dialog. Such as drop rates, craft locations etc etc.</i>
+			</font>
+			</td></tr></table>
+		</td>
+	</tr>
+
+
+
+
 	<tr><td></td></tr>
 
 	<tr>
@@ -240,14 +280,6 @@ Sever Packet(
                chaptchaString                 // length: 5bytes , method 1: generated string (accepted chars A-Z)
 	)
 
-
-Sever Packet(
-               id=249:Captcha,                // length: 1byte 
-               action=013:Open,               // length: 1byte
-               captchaID                      // length: 2bytes , send back in c->s RESULT CAPTCHA packet
-               rewardEXP                      // length: 3bytes , displays the rewarded experience on popup
-                                              // length: 0bytes , method 2: client-checked captcha
-	)
 			</pre>
 			</td></tr>
 			<tr><td style="padding:25px" bgcolor="#e8e8e8">
