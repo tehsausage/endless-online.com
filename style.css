@@ -28,6 +28,15 @@
 	position: relative;
 }
 
+.copyrightlink{
+	color : #70531D;
+	font-family: Arial, sans-serif;
+	font-size: 9px;
+	text-align: left;
+	text-decoration: none;
+	position: relative;
+}
+
 .grlink{
 	color : #CCCCCC;
 	font-family: Arial, sans-serif;
