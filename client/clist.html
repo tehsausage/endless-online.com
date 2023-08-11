@@ -68,69 +68,110 @@ Commandlist
 </PRE></td></tr><table><br/>
 
 <table cellpadding="20"><tr><td width="1100" bgcolor="#f4f4ef"><PRE>
-EOS| basic commands:
 
-A2 : $ban , $b character time - ban the player for 20m(empty) or 1h,2h,3h
-A4 : $ban , $b character forever(account) or perm(serverwide)
-A4 : $evacuate , $e - evacuate map
-A2 : $free , $f character - frees player from jail
-A3 : $freeze character - freeze the player from moving
+
+0.4.X ::  EOS AID 
+
+
+EOS| [A]DMIN basic commands:
+---------------------------------------------------------------------------------------------------------
 A1 : $hide , $h - hide yourself on/off
-A3 : $globalmute , $gmute - globalchat on/off
-A1 : $info character - shows basic stats of player
-A1 : $inventory, $i character - shows inventory of player
-A2 : $jail, $j character - jails the player
-A2 : $kick , $k character - kicks off the player
 A1 : $loc, $locate character - display map,channel and coords of player 
-A2 : $mute , $m character - mute the player
-A2 : $play , $p songid - play a song id like 1,2,3,4 etc to all in range
-A3 : $quake, $q strength - quake the map
-D2 : $remap, $r - reload current map
-A2 : $skick , $sk character - silently kick off the player
-A2 : $smute , $sm character - silently mute the player
 A1 : $spy, $s character - casual warp to map of player, in a corner
-D1 : $stats - shows server stats on chat
 A1 : $stealth - do not show yourself on online player list.
 A1 : $unfreeze , $u character - unfreeze the player
-D1 : $wf value - warps fastfoward by x tiles (10default)
-A1 : $warp, $w, $y map x y - warps to a map name-lookup, map id , or map id x,y
+A1 : $warp, $w, $y map x y - warps to a map id , or map id x,y
+
+A2 : $kick , $k character - kicks off the player
+A2 : $skick , $sk character - silently kick off the player
+A2 : $mute , $m character - mute the player
+A2 : $smute , $sm character - silently mute the player
+A2 : $ban , $b character - ban the player for 20m
+A2 : $jail, $j character - jails the player
+A2 : $free , $f character - frees player from jail
+A2 : $globalclear , $gclear lines - globalchat clear x lines or all
+A2 : $setfilter chatlevel - off,on,heavy,strict,ultra - overwrites client filter
 A2 : $warpmeto, $wm2 character - warps you to player
-A3 : $warptome, $w2m character - warps player to you
 
-</PRE></td></tr><table><br/>
+A3 : $ban , $b character time - ban the player for 20m(empty) or 1h,2h,3h <
+A3 : $captcha character - put player in captcha lock
+A3 : $freeze character - freeze the player from moving
+A3 : $globalmute , $gmute - globalchat on/off
+A3 : $play , $p songid - play a song id like 1,2,3,4 etc to all in range
 
-<table cellpadding="20"><tr><td width="1100" bgcolor="#f4f4ef"><PRE>
-EOS| character mod commands:
+A4 : $ban , $b character forever, ip+hd ban untill next reboot
+A4 : $ban , $b character account, perma account ban + ip+hd ban untill next reboot
+A4 : $ban , $b character perma, perma account ban + perma ip+hd ban
+A4 : $evacuate , $e - evacuate map
+A4 : $marry, $wedding char1 char2 - start a marriage between 2 players
+A4 : $quake, $q strength - quake the map
+A4 : $warptome, $w2m character - warps player to you
 
-A4 : $demote character - demotes admin player to normal player
+A5 : $setadmin character adminlvl - make player admin with adminlevel
+A5 : $demote character - demotes admin player to normal player
+
+
+
+
+EOS| [I]NSPECTION basic commands:
+---------------------------------------------------------------------------------------------------------
+I1 : $info character - shows basic stats of player
+I1 : $inventory, $inv character - shows inventory of player
+I1 : $ipaperdoll, $ipap character - shows paperdolls of player
+I1 : $ipartner - shows partner status of player
+I1 : $igatherlock character - shows gather lock of the player
+
+I2 : $ibans - show all current bans
+I2 : $iconfig - shows basic server configuration
+I2 : $ipings - shows server ping stats
+I2 : $gather - shows all map gather stats
+I2 : $igroup characters - shows group status of player
+I2 : $igroups - shows all server groups
+I2 : $imap - shows all map stats
+I2 : $iserver - shows advanced server stats
+I2 : $stats - shows server stats on chat
+I2 : $inpcs - shows all npc information on current map
+I2 : $inpc id - shows npc information
+
+I3 : $iaccount, $iacc character - shows advanced account stats
+
+
+
+EOS| [D]EBUG basic commands:
+---------------------------------------------------------------------------------------------------------
+D1 : $forget character spellid - player forget a skill
+D1 : $immortal , toggle immortal / normal
+D1 : $completequest id - complete quest id to finished
+D1 : $learn character spellid - player learns a skills
+D1 : $gainexp exp - gain the ammount of exp
 D1 : $levelup times - level up your admin player x times
-D1 : $resetlevel - reset your admin player to level 0
+D1 : $setexp exp - gain the ammount of exp
 D1 : $setlevel level - level up your admin player to level
-A1 : $setadmin character adminlvl - make player admin with adminlevel, cannot be higher then your own adminlevel.
-D2 : $setdebug character - give player full debug options (caution on live-servers!)
 D1 : $setclass value - sets the class of target player
+D1 : $sethairstyle character id - sets race of target player to id
+D1 : $sethaircolor character id - sets race of target player to id
+D1 : $settitle character title - sets the title of a player
+D1 : $setskin , $setrace character id - sets race of target player to id
 D1 : $sethp , $shp character value - sets current hitpoints to value
 D1 : $setmp , $smp character value - sets current manapoints to value
 D1 : $setsp , $ssp character value - sets current specialpoints to value
-D1 : $sethairstyle character id - sets race of target player to id
-D1 : $sethaircolor character id - sets race of target player to id
-D1 : $setskin , $setrace character id - sets race of target player to id
-D1 : $settitle character title - sets the title of a player
+D1 : $setquest id state - set the active quest to a state
+D1 : $resetlevel - reset your player to level 0
+D1 : $resetquest id - reset a specific quest id
+D1 : $resetquests - reset all your player quests
+D1 : $setdw map x y - set your dynamic warp coordinate
+D1 : $wf value - warps fastfoward by x tiles (10default)
 
-</PRE></td></tr><table><br/>
-
-<table cellpadding="20"><tr><td width="1100" bgcolor="#f4f4ef"><PRE>
-EOS| debug mod commands:
-
-D1 : $ditem , $di itemid value - drops x items in your inventory, can also enter name eg: $di black boots
-D1 : $sitem , $si itemid value - spawns x items in your inventory, can also enter name eg: $si canvas 5
-D1 : $ritem , $si itemid - removes all items of item.id out of your inventory
-D1 : $mapinfo - view internal information map and channel status on chat
 D2 : $scahn , $spawnchan value - spawn x more server-channels of the map
 D2 : $snpc , $spawnnpc id/name value - spawn x of npc on your current x,y location
 D2 : $denpc , $despawnnpc id - despawn npc id (map handle)
-D1 : $learn character spellid - player learns a skills
-D1 : $forget character spellid - player forget a skill
+D2 : $remap, $r - reload current map
+
+D3 : $ditem , $di itemid value - drops x items in your inventory, can also enter name eg: $di black boots
+D3 : $sitem , $si itemid value - spawns x items in your inventory, can also enter name eg: $si canvas 5
+D3 : $ritem , $si itemid - removes all items of item.id out of your inventory
+D3 : $setdebug character - give player full debug options (caution on live-servers!)
+
 
 </PRE></td></tr><table><br/>
 		</td>
