@@ -57,24 +57,42 @@
 }
 
 .headercontainer {
-  width: 100%;
-  height: 600px;
+  width: 1317px;
+  height: 476px;
   position: relative;
 }
 
-.headervideo {
-  width: 100%;
-  height: 100%;
+.headerslider {
+  width: 1000px;
+  height: 200px;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 130px;
+  left: 40px;
 }
 
 .headerover {
-  width: 100%;
-  height: 100%;
+  width: 1317px;
+  height: 476px;
   position: absolute;
   top: 0;
-  left: 0;
+  left: 0px;
   z-index: 10;
+}
+
+
+.mySlides {display: none;}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
 }
